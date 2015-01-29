@@ -38,6 +38,8 @@ body {
 
   display: block;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
 
   color: rgba(white, .5);
 
@@ -159,6 +161,8 @@ body {
 .notifications {
   position: fixed;
   z-index: 999;
+  user-select: none;
+  -webkit-user-select: none;
   right: 1em;
   top: 1em;
   width: 250px;
