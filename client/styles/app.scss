@@ -114,3 +114,14 @@ body {
   color: white;
   text-align: center;
 }
+
+.quatrecentquatre {
+  font-family: $title-font;
+  color: rgba(255, 255, 255, 0.4);;
+  font-size: 400px;
+  transform: rotate(-30deg);
+  position: fixed;
+  &:before {
+    content: '4O4';
+  }
+}
