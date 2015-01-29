@@ -44,6 +44,8 @@ exports.lognup = function (req, res) {
     // Send mail
   }
 
+  if (!req.body.email) { return res.send(500).end(); }
+
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) { return handleError(res, err); }
     if (!user) {
@@ -67,10 +69,10 @@ exports.destroy = function (req, res) {
 
   User.findById(req.user._id, function (err, user) {
     if (err) { return handleError(res, err); }
-    if (!user) { return res.status(404); }
+    if (!user) { return res.status(404).end(); }
     user.remove(function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(204);
+      return res.status(204).end();
     });
   });
 
