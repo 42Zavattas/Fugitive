@@ -4,6 +4,8 @@ var config = require('./config/environment');
 var user = require('./api/user/user.controller');
 var link = require('./api/link/link.controller');
 
+var Link = require('./api/link/link.model');
+
 module.exports = function (app) {
 
   var rootPageMiddleware = function (req, res) {
@@ -16,7 +18,7 @@ module.exports = function (app) {
   app.post('/lognup', user.lognup);
 
   app.post('/auth', user.auth);
-  //app.post('/create', link.create);
+  app.post('/create', link.create);
 
   // API
   app.use('/api/links', require('./api/link'));
@@ -31,8 +33,11 @@ module.exports = function (app) {
 
   app.route('/*')
     .get(function (req, res) {
-      console.log(req.originalUrl.substr(1));
-      res.redirect('http://google.fr');
+      Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
+        if (err || !link) { return res.redirect('/'); } // TODO 404 page
+        res.redirect(link.dst);
+        // delete
+      });
     });
 
 };

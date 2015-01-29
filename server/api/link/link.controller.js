@@ -33,6 +33,8 @@ exports.create = function (req, res) {
     req.body.user = req.user._id;
   }
 
+  req.body.src = uuid.v4().split('-')[0];
+
   Link.create(req.body, function (err, link) {
     if (err) { return handleError(res, err); }
     return res.status(201).json(link);
@@ -51,7 +53,7 @@ exports.update = function (req, res) {
 
     if (err) { return handleError(res, err); }
     if (!link) { return res.status(404).end(); }
-    if (link.user !== req.user._id) { return res.status.(401).end(); }
+    if (link.user !== req.user._id) { return res.status(401).end(); }
 
     var updated = _.merge(link, req.body);
     updated.save(function (err) {
@@ -72,7 +74,7 @@ exports.destroy = function (req, res) {
   Link.findById(req.params.id, function (err, link) {
     if (err) { return handleError(res, err); }
     if (!link) { return res.status(404).end(); }
-    if (link.user !== req.user._id) { return res.status.(401).end(); }
+    if (link.user !== req.user._id) { return res.status(401).end(); }
     link.remove(function (err) {
       if (err) { return handleError(res, err); }
       return res.status(204);
