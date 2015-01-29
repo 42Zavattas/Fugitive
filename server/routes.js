@@ -29,7 +29,9 @@ module.exports = function (app) {
       res.status(404).end();
     });
 
-  app.get('/auth/:token', rootPageMiddleware);
+  ['/auth/:token', '/404'].forEach(function (e) {
+    app.get(e, rootPageMiddleware);
+  });
 
   app.route('/*')
     .get(function (req, res) {
