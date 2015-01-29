@@ -43,6 +43,7 @@ body {
 
 .input-main--container {
   text-align: center;
+  display: flex;
 }
 
 .input-main {
@@ -58,7 +59,7 @@ body {
   text-shadow: rgba(black, .3) 0 1px;
   padding: 1em;
   font-family: monospace;
-  width: 100%;
+  flex: 5;
 
   &:focus {
     border-color: $cgreen;
@@ -66,6 +67,10 @@ body {
     box-shadow: rgba(black, .4) 0 3px 5px;
   }
 
+}
+
+.input-main--submit {
+  flex: 1;
 }
 
 .lognuping {

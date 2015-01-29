@@ -5,7 +5,22 @@ angular.module('fugitive')
 
     var vm = this;
 
+    vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     vm.user = { email: 'ou@oou.fr' };
+
+    vm.link = {
+      dst: ''
+    };
+
+    vm.genLink = function () {
+      $http.post('/create', vm.link)
+        .then(function (res) {
+          console.log(res);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    };
 
     vm.lognup = function () {
       $http.post('/lognup', vm.user)

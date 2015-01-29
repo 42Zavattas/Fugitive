@@ -32,8 +32,22 @@
     </form>
   </div>
 
-  <div class="input-main--container">
-    <input class="input-main" type="text"/>
-  </div>
+  <form ng-submit="vm.genLink()" name="linkform">
+
+    <div class="input-main--container">
+
+      <input class="input-main"
+             ng-model="vm.link.url"
+             required
+             ng-pattern="vm.urlValidate"
+             type="text"/>
+
+      <button class="input-main--submit" ng-show="linkform.$valid">
+        create
+      </button>
+
+    </div>
+
+  </form>
 
 </div>
