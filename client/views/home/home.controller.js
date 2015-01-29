@@ -10,15 +10,16 @@ angular.module('fugitive')
     vm.lognup = function () {
       $http.post('/lognup', vm.user)
         .then(function (res) {
-          console.log(res);
+          vm.uuid = res.data;
+          console.log(vm.uuid);
         })
         .catch(function (err) {
           console.log(err);
         });
     };
 
-    vm.lognupFake = function (token) {
-      window.location.replace("http://localhost:9000/auth/" + token);
+    vm.lognupFake = function () {
+      window.location.replace("http://localhost:9000/auth/" + vm.uuid);
     };
 
   });

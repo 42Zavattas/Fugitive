@@ -9,21 +9,21 @@ $cgreen: #395216;
 
 body {
   background: $cbase;
+}
 
-  > h1 {
-    color: rgba(white, .5);
-    position: absolute;
-    margin: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-    font-size: 48px;
-    text-align: center;
-    font-family: $title-font;
-    > span {
-      display: block;
-      padding: 50px;
-    }
+.main-title {
+  color: rgba(white, .5);
+  position: absolute;
+  margin: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  font-size: 48px;
+  text-align: center;
+  font-family: $title-font;
+  > span {
+    display: block;
+    padding: 50px;
   }
 }
 
@@ -66,4 +66,9 @@ body {
     box-shadow: rgba(black, .4) 0 3px 5px;
   }
 
+}
+
+.lognuping {
+  color: white;
+  text-align: center;
 }
