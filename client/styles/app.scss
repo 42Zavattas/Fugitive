@@ -9,6 +9,10 @@ $corange: #604500;
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background: $cbase;
 }
@@ -156,8 +160,24 @@ body {
     color: rgba(white, 0.8);
     font-size: 30px;
     div {
-      display: block;
+      margin-top: 20px;
       text-align: center;
+      text-shadow: rgba(black, .5) 0 4px 0;
+      &:hover {
+        text-shadow: none;
+      }
+      a i {
+        padding: 10px;
+        border: 5px solid $cblue;
+        box-shadow: rgba(black, .5) 0 4px 0;
+        border-radius: 50%;
+        color: $cblue;
+        &:hover {
+          color: white;
+          border-color: white;
+          box-shadow: none;
+        }
+      }
     }
     @media (max-width: 600px) {
       font-size: 20px;
