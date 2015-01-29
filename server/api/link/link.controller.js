@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var uuid = require('node-uuid');
 var Link = require('./link.model');
 
 function handleError(res, err) {
@@ -29,7 +30,7 @@ exports.index = function (req, res) {
  */
 exports.create = function (req, res) {
 
-  if (req.user._id) {
+  if (req.user && req.user._id) {
     req.body.user = req.user._id;
   }
 
