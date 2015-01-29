@@ -4,34 +4,6 @@
 
 <div class="container">
 
-  <div class="lognup-form" style="margin-bottom: 1em; border: 1px solid red;">
-    <form ng-submit="vm.lognup()">
-
-      <input type="email"
-             ng-model="vm.user.email"
-             ng-model="user.email"
-             placeholder="email"/>
-
-      <button type="submit">
-        Lognup
-      </button>
-
-    </form>
-  </div>
-  <div class="lognup-form" style="margin-bottom: 1em; border: 1px solid red;">
-    <form ng-submit="vm.lognupFake()">
-
-      <input type="text"
-             ng-model="vm.uuid"
-             placeholder="vm.uuid"/>
-
-      <button type="submit">
-        Lognup fake
-      </button>
-
-    </form>
-  </div>
-
   <form ng-submit="vm.genLink()" name="linkform">
 
     <div class="input-main--container">
@@ -42,7 +14,9 @@
              ng-pattern="vm.urlValidate"
              type="text"/>
 
-      <button class="input-main--submit" ng-show="linkform.$valid">
+      <button class="input-main--submit"
+              ng-show="linkform.$valid"
+              ng-disabled="linkform.$invalid">
         create
       </button>
 
