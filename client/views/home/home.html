@@ -11,6 +11,19 @@
 
   </form>
 </div>
+<div class="lognup-form" style="margin-bottom: 1em; border: 1px solid red;">
+  <form ng-submit="vm.lognupFake(token)">
+
+    <input type="text"
+           ng-model="token"
+           placeholder="uuid"/>
+
+    <button type="submit">
+      Lognup fake
+    </button>
+
+  </form>
+</div>
 
 <div class="input-main--container">
   <input class="input-main" type="text"/>

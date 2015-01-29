@@ -15,4 +15,8 @@ angular.module('fugitive')
         });
     };
 
+    vm.lognupFake = function (token) {
+      window.location.replace("http://localhost:9000/auth/" + token);
+    };
+
   });
