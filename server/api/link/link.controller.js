@@ -40,11 +40,17 @@ exports.reroute = function (req, res) {
         console.log('IP === ', req.ip);
 
         // Not expired, but will apply some cool features?
-        if (link.geo && link.geo.length) {
-          link.geo.forEach(function (e) {
 
+        if (link.geo && link.geo.length) {
+          console.log('GEO MODE');
+          var country = maxmind.getCountry(req.ip);
+          link.geo.forEach(function (e) {
+            if (country === e.country) {
+              dest = e.rpl;
+              console.log('Country detected ' + e.country);
+              return ;
+            }
           });
-          console.log('GEO');
         }
 
       }
