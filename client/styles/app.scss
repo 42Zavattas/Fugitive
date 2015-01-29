@@ -197,14 +197,19 @@ body {
   user-select: none;
   -webkit-user-select: none;
   right: 1em;
+  left: 1em;
   top: 1em;
-  width: 250px;
   text-align: justify;
   font-family: $light-font;
 
   @media (max-width: 600px) {
     top: auto;
     bottom: 1em;
+  }
+
+  .notifications--container {
+    margin: 0 auto;
+    width: 350px;
   }
 }
 
@@ -218,11 +223,22 @@ body {
 
   &.info {
     background: rgba($cblue, .5);
-    color: rgba(white, .2);
+    color: rgba(white, .3);
     border: 1px solid rgba(white, .05);
     &:hover {
       background: rgba($cblue, .6);
     }
   }
 
+}
+
+.sideback {
+  position: fixed;
+  top: 0;
+  &.right {
+    right: 0;
+  }
+  &.left {
+    left: 0;
+  }
 }
