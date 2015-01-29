@@ -37,7 +37,7 @@
     <div class="input-main--container">
 
       <input class="input-main"
-             ng-model="vm.link.url"
+             ng-model="vm.link.dst"
              required
              ng-pattern="vm.urlValidate"
              type="text"/>
@@ -49,5 +49,9 @@
     </div>
 
   </form>
+
+  <div ng-if="vm.resLink">
+    <pre>fugitive.link/{{ vm.resLink.src }}</pre>
+  </div>
 
 </div>

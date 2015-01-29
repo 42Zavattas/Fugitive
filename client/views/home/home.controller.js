@@ -8,6 +8,7 @@ angular.module('fugitive')
     vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     vm.user = { email: 'ou@oou.fr' };
 
+    vm.resLink = null;
     vm.link = {
       dst: ''
     };
@@ -15,7 +16,7 @@ angular.module('fugitive')
     vm.genLink = function () {
       $http.post('/create', vm.link)
         .then(function (res) {
-          console.log(res);
+          vm.resLink = res.data;
         })
         .catch(function (err) {
           console.log(err);
