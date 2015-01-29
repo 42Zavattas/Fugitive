@@ -136,6 +136,13 @@ body {
       box-shadow: rgba(black, .2) 0 0 2px;
       color: rgba(white, .5);
     }
+
+    &.helper-info {
+      background: $cblue;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .5);
+    }
   }
 }
 

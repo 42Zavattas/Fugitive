@@ -42,10 +42,13 @@
 
       <div class="helper-container">
         <span class="helper-error" ng-if="linkform.src.$invalid && linkform.src.$dirty">
-          bad url
+          Bad URL
         </span>
         <span class="helper-success" ng-if="linkform.$valid">
-          Press ENTER to create your unique usage link
+          Press ENTER
+        </span>
+        <span class="helper-info" ng-if="linkform.src.$pristine">
+          Enter an URL
         </span>
       </div>
 
