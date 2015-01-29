@@ -5,6 +5,7 @@ var compression = require('compression');
 var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
+var expressJwt = require('express-jwt');
 
 var config = require('./environment');
 
@@ -19,6 +20,8 @@ module.exports = function (app) {
   app.use(morgan('dev'));
   app.use(express.static(path.join(config.root, 'client')));
   app.set('appPath', 'client');
+
+  app.use('/api', expressJwt({ secret: config.secret }));
 
   if ('development' === env || 'test' === env) {
     app.use(require('errorhandler')());

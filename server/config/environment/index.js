@@ -8,6 +8,7 @@ var all = {
   env: process.env.NODE_ENV || 'development',
   root: path.normalize(__dirname + '/../../..'),
   port: process.env.PORT || 9000,
+  secret: process.env.SECRET,
 
   // MongoDB connection options
   mongo: {
