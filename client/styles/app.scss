@@ -48,8 +48,6 @@ body {
   color: rgba(white, .5);
 
   text-align: center;
-  font-family: $title-font;
-  text-shadow: rgba(black, .5) 0 4px 0;
   margin-bottom: 5em;
 
   &:hover {
@@ -64,6 +62,8 @@ body {
   }
 
   h1 {
+    text-shadow: rgba(black, .5) 0 4px 0;
+    font-family: $title-font;
     font-size: 48px;
     margin: 0;
 
@@ -74,6 +74,11 @@ body {
     > span {
       display: block;
     }
+  }
+  h2 {
+    margin: 0;
+    font-size: 13px;
+    color: rgba(white, .3);
   }
 }
 
