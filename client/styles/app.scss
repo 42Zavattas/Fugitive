@@ -169,6 +169,11 @@ body {
       text-shadow: rgba(black, .5) 0 4px 0;
       &:hover {
         text-shadow: none;
+        i {
+          color: white;
+          border-color: white;
+          box-shadow: none;
+        }
       }
       a i {
         padding: 10px;
@@ -176,11 +181,6 @@ body {
         box-shadow: rgba(black, .5) 0 4px 0;
         border-radius: 50%;
         color: $cblue;
-        &:hover {
-          color: white;
-          border-color: white;
-          box-shadow: none;
-        }
       }
     }
     @media (max-width: 600px) {
