@@ -152,6 +152,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
   @media (max-width: 600px) {
     top: 100px;
     font-size: 150px;
@@ -169,6 +170,11 @@ body {
       text-shadow: rgba(black, .5) 0 4px 0;
       &:hover {
         text-shadow: none;
+        i {
+          color: white;
+          border-color: white;
+          box-shadow: none;
+        }
       }
       a i {
         padding: 10px;
@@ -176,11 +182,9 @@ body {
         box-shadow: rgba(black, .5) 0 4px 0;
         border-radius: 50%;
         color: $cblue;
-        &:hover {
-          color: white;
-          border-color: white;
-          box-shadow: none;
-        }
+      }
+      @media (max-width: 600px) {
+        margin-top: 200px;
       }
     }
     @media (max-width: 600px) {
@@ -232,6 +236,7 @@ body {
 
 }
 
+<<<<<<< HEAD
 .sideback {
   position: fixed;
   top: 0;
@@ -240,5 +245,25 @@ body {
   }
   &.left {
     left: 0;
+  }
+}
+
+.icon-spinner8 {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+  margin-top: 20px;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
