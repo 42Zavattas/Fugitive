@@ -6,7 +6,7 @@ angular.module('fugitive')
     var vm = this;
 
     vm.lognup = function () {
-      $http.post('/users')
+      $http.post('/lognup')
         .then(function (res) {
           console.log(res);
         })

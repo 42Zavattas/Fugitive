@@ -5,7 +5,6 @@ var router = express.Router();
 var controller = require('./link.controller');
 
 router.get('/', controller.index);
-router.get('/:id', controller.show);
 
 router.post('/', controller.create);
 

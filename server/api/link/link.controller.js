@@ -8,31 +8,18 @@ function handleError(res, err) {
 }
 
 /**
- * Get list of links
+ * Get my links
  *
  * @param req
  * @param res
  */
 exports.index = function (req, res) {
-  Link.find(function (err, links) {
+  Link.find({ user: req.user._id }, function (err, links) {
     if (err) { return handleError(res, err); }
     return res.status(200).json(links);
   });
 };
 
-/**
- * Get a single link
- *
- * @param req
- * @param res
- */
-exports.show = function (req, res) {
-  Link.findById(req.params.id, function (err, link) {
-    if (err) { return handleError(res, err); }
-    if (!link) { return res.status(404); }
-    return res.status(200).json(link);
-  });
-};
 
 /**
  * Creates a new link in the DB.
