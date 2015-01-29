@@ -36,6 +36,10 @@ exports.create = function (req, res) {
 
   req.body.src = uuid.v4().split('-')[0];
 
+  if (!req.body.dst.match(/^[a-zA-Z]+:\/\//)) {
+    req.body.dst = 'http://' + req.body.dst;
+  }
+
   Link.create(req.body, function (err, link) {
     if (err) { return handleError(res, err); }
     return res.status(201).json(link);
