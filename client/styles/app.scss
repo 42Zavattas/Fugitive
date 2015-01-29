@@ -13,6 +13,7 @@ $cblue: #003939;
 
 body {
   background: $cbase;
+  font-family: $light-font;
 }
 
 .container {
@@ -22,7 +23,6 @@ body {
   justify-content: center;
   width: 600px;
   height: 100vh;
-  font-family: sans-serif;
   position: relative;
 
   margin: 0 auto;
