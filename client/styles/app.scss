@@ -1,9 +1,11 @@
 $title-font: 'kontanterbold';
+$light-font: 'exo_2extra_light';
 
 $cbase: #0D1822;
 $cgreen: #395216;
 $cred: #351412;
 $corange: #604500;
+$cblue: #003939;
 
 * {
   box-sizing: border-box;
@@ -152,4 +154,32 @@ body {
     color: rgba(white, 0.4);
     font-size: 30px;
   }
+}
+
+.notifications {
+  position: fixed;
+  right: 1em;
+  top: 1em;
+  width: 250px;
+  text-align: justify;
+  font-family: $light-font;
+}
+
+.notif {
+
+  padding: .5em;
+  border-radius: 2px;
+  box-shadow: rgba(black, .2) 0 2px 3px;
+  transition: background-color ease-out 100ms;
+  cursor: pointer;
+
+  &.info {
+    background: rgba($cblue, .5);
+    color: rgba(white, .2);
+    border: 1px solid rgba(white, .05);
+    &:hover {
+      background: rgba($cblue, .6);
+    }
+  }
+
 }
