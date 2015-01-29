@@ -40,7 +40,7 @@ exports.lognup = function (req, res) {
     user.uuid = uuid.v4();
     console.log(user.uuid);
     user.save();
-    res.send(200);
+    res.json(user.uuid);
     // Send mail
   }
 
