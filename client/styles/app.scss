@@ -1,3 +1,69 @@
+$title-font: 'kontanterbold';
+
+$cbase: #151F3D;
+$cgreen: #395216;
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  background: $cbase;
+
+  > h1 {
+    color: rgba(white, .5);
+    position: absolute;
+    margin: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    font-size: 48px;
+    text-align: center;
+    font-family: $title-font;
+    > span {
+      display: block;
+      padding: 50px;
+    }
+  }
+}
+
+.container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 600px;
+  height: 100vh;
   font-family: sans-serif;
+  position: relative;
+
+  margin: 0 auto;
+
+}
+
+.input-main--container {
+  text-align: center;
+}
+
+.input-main {
+  outline: none;
+  font-size: 24px;
+  background: rgba(black, .1);
+  color: whitesmoke;
+  border-top: none;
+  border-bottom: 3px solid rgba(black, .3);
+  border-left: none;
+  border-right: none;
+  color: rgba(black, .6);
+  text-shadow: rgba(black, .3) 0 1px;
+  padding: 1em;
+  font-family: monospace;
+  width: 100%;
+
+  &:focus {
+    border-color: $cgreen;
+    color: $cgreen;
+    box-shadow: rgba(black, .4) 0 3px 5px;
+  }
+
 }
