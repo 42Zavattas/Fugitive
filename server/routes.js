@@ -36,9 +36,11 @@ module.exports = function (app) {
   app.route('/*')
     .get(function (req, res) {
       Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
-        if (err || !link) { return res.redirect('/'); } // TODO 404 page
+        if (err || !link) { return res.redirect('/404'); }
         res.redirect(link.dst);
-        // delete
+        if (!link.user) {
+          link.remove();
+        }
       });
     });
 
