@@ -19,9 +19,8 @@ function handleError(res, err) {
  * @param res
  */
 exports.auth = function (req, res) {
-  User.findOne({ uuid: req.params.uuid }, function (err, user) {
-    if (err) { return res.redirect('/'); }
-    if (!user) { return res.redirect('/'); }
+  User.findOne({ uuid: req.body.uuid }, function (err, user) {
+    if (err || !user) { return res.redirect('/'); }
 
     res.json({ token : jwt.sign(user, config.secret, { expireInMinutes: 60 * 24 }) });
     user.uuid = '';
@@ -40,6 +39,8 @@ exports.lognup = function (req, res) {
   function nexted (user) {
     user.uuid = uuid.v4();
     console.log(user.uuid);
+    user.save();
+    res.send(200);
     // Send mail
   }
 

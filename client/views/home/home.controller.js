@@ -5,8 +5,10 @@ angular.module('fugitive')
 
     var vm = this;
 
+    vm.user = { email: 'ou@oou.fr' };
+
     vm.lognup = function () {
-      $http.post('/lognup')
+      $http.post('/lognup', vm.user)
         .then(function (res) {
           console.log(res);
         })

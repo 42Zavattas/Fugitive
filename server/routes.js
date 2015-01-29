@@ -7,6 +7,8 @@ var link = require('./api/link/link.controller');
 module.exports = function (app) {
 
   app.post('/lognup', user.lognup);
+
+  app.post('/auth', user.auth);
   //app.post('/create', link.create);
 
   // API
@@ -20,10 +22,8 @@ module.exports = function (app) {
 
   app.route('/*')
     .get(function (req, res) {
-      res.sendFile(
-        app.get('appPath') + '/index.html',
-        { root: config.root }
-      );
+      console.log(req.originalUrl.substr(1));
+      res.redirect('http://google.fr');
     });
 
 };
