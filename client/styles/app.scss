@@ -3,6 +3,7 @@ $title-font: 'kontanterbold';
 $cbase: #0D1822;
 $cgreen: #395216;
 $cred: #351412;
+$corange: #604500;
 
 * {
   box-sizing: border-box;
@@ -10,31 +11,6 @@ $cred: #351412;
 
 body {
   background: $cbase;
-}
-
-.main-title {
-  text-decoration: none;
-  z-index: 99;
-
-  color: rgba(white, .5);
-  position: absolute;
-  margin: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-
-  text-align: center;
-  font-family: $title-font;
-  text-shadow: rgba(black, .5) 0 4px 0;
-
-  h1 {
-    font-size: 48px;
-    margin: 0;
-    > span {
-      display: block;
-      padding: 50px;
-    }
-  }
 }
 
 .container {
@@ -49,6 +25,51 @@ body {
 
   margin: 0 auto;
 
+  @media (max-width: 600px) {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+}
+
+.main-title {
+
+  display: block;
+  text-decoration: none;
+
+  color: rgba(white, .5);
+
+  text-align: center;
+  font-family: $title-font;
+  text-shadow: rgba(black, .5) 0 4px 0;
+  margin-bottom: 5em;
+
+  &:hover {
+    h1 {
+      text-shadow: none;
+      color: $corange;
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin: 1em 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin: 0;
+
+    @media (max-width: 600px) {
+      font-size: 24px;
+    }
+
+    > span {
+      display: block;
+    }
+  }
+}
+
+.content {
 }
 
 .input-main--container {
