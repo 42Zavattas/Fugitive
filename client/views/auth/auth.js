@@ -3,7 +3,7 @@
 angular.module('fugitive')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/auth', {
+      .when('/auth/:token', {
         templateUrl: 'views/auth/auth.html',
         controller: 'AuthCtrl',
         controllerAs: 'vm'

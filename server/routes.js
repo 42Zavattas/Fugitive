@@ -6,6 +6,13 @@ var link = require('./api/link/link.controller');
 
 module.exports = function (app) {
 
+  var rootPageMiddleware = function (req, res) {
+    res.sendFile(
+      app.get('appPath') + '/index.html',
+      { root: config.root }
+    );
+  };
+
   app.post('/lognup', user.lognup);
 
   app.post('/auth', user.auth);
@@ -19,6 +26,8 @@ module.exports = function (app) {
     .get(function (req, res) {
       res.status(404).end();
     });
+
+  app.get('/auth/:token', rootPageMiddleware);
 
   app.route('/*')
     .get(function (req, res) {
