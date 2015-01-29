@@ -2,6 +2,7 @@ $title-font: 'kontanterbold';
 
 $cbase: #0D1822;
 $cgreen: #395216;
+$cred: #351412;
 
 * {
   box-sizing: border-box;
@@ -12,18 +13,27 @@ body {
 }
 
 .main-title {
+  text-decoration: none;
+  z-index: 99;
+
   color: rgba(white, .5);
   position: absolute;
   margin: 0;
   right: 0;
   left: 0;
   top: 0;
-  font-size: 48px;
+
   text-align: center;
   font-family: $title-font;
-  > span {
-    display: block;
-    padding: 50px;
+  text-shadow: rgba(black, .5) 0 4px 0;
+
+  h1 {
+    font-size: 48px;
+    margin: 0;
+    > span {
+      display: block;
+      padding: 50px;
+    }
   }
 }
 
@@ -43,7 +53,6 @@ body {
 
 .input-main--container {
   text-align: center;
-  display: flex;
 }
 
 .input-main {
@@ -55,22 +64,50 @@ body {
   border-bottom: 3px solid rgba(black, .3);
   border-left: none;
   border-right: none;
-  color: rgba(black, .6);
   text-shadow: rgba(black, .3) 0 1px;
   padding: 1em;
   font-family: monospace;
-  flex: 5;
+  width: 100%;
+  margin-bottom: 1em;
 
   &:focus {
+    box-shadow: rgba(black, .4) 0 4px 5px;
+  }
+
+  &.valid {
     border-color: $cgreen;
-    color: $cgreen;
-    box-shadow: rgba(black, .4) 0 3px 5px;
+  }
+
+  &.invalid {
+    border-color: $cred;
   }
 
 }
 
 .input-main--submit {
   flex: 1;
+}
+
+.helper-container {
+  position: absolute;
+  > span {
+    font-size: 13px;
+    padding: .5em;
+
+    &.helper-error {
+      background: $cred;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .3);
+    }
+
+    &.helper-success {
+      background: $cgreen;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .5);
+    }
+  }
 }
 
 .lognuping {

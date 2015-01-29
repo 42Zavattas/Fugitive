@@ -1,9 +1,14 @@
 'use strict';
 
 angular.module('fugitive')
-  .controller('HomeCtrl', function ($http) {
+  .controller('HomeCtrl', function ($http, $rootScope, $location) {
 
     var vm = this;
+
+    var _prefix =
+      $location.protocol() +
+      '://' + $location.host() +
+      ($location.port() !== 80 ? ':' + $location.port() : '');
 
     vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
     vm.user = { email: 'ou@oou.fr' };
@@ -16,7 +21,9 @@ angular.module('fugitive')
     vm.genLink = function () {
       $http.post('/create', vm.link)
         .then(function (res) {
-          vm.resLink = res.data;
+          vm.link.dst = _prefix + '/' + res.data.src;
+          $rootScope.$broadcast('linkCreated');
+
         })
         .catch(function (err) {
           console.log(err);
