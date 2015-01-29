@@ -2,11 +2,58 @@
 
 var _ = require('lodash');
 var uuid = require('node-uuid');
+
+var maxmind = require('maxmind');
+maxmind.init(__dirname + '/geo.dat');
+
 var Link = require('./link.model');
 
 function handleError(res, err) {
   return res.status(500).send(err);
 }
+
+exports.reroute = function (req, res) {
+  Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
+    if (err || !link) { return res.redirect('/404'); }
+
+    if (!link.user) {
+      res.redirect(link.dst);
+      link.remove();
+    } else {
+
+      var dest = link.dst;
+
+      if (link.num === 0 || (new Date().getTime() > link.exp)) {
+        // The link is expired, delete or redirect if set
+        if (link.rpl) {
+          dest = link.rpl;
+        } else {
+          link.remove();
+          return res.redirect('/404');
+        }
+      } else {
+
+        if (link.num !== -1) {
+          link.num--;
+        }
+
+        console.log('IP === ', req.ip);
+
+        // Not expired, but will apply some cool features?
+        if (link.geo && link.geo.length) {
+          link.geo.forEach(function (e) {
+
+          });
+          console.log('GEO');
+        }
+
+      }
+
+      res.redirect(dest);
+
+    }
+  });
+};
 
 /**
  * Get my links
@@ -31,7 +78,11 @@ exports.index = function (req, res) {
 exports.create = function (req, res) {
 
   if (!req.body.dst) {
-    return res.send(500).end();
+    return res.send(400).end();
+  }
+
+  if ((!req.body.num || req.body.num < 1) && (!req.body.expire)) {
+    req.body.num = 1;
   }
 
   if (req.user && req.user._id) {
@@ -47,28 +98,6 @@ exports.create = function (req, res) {
   Link.create(req.body, function (err, link) {
     if (err) { return handleError(res, err); }
     return res.status(201).json(link);
-  });
-};
-
-/**
- * Updates an existing link in the DB.
- *
- * @param req
- * @param res
- */
-exports.update = function (req, res) {
-  if (req.body._id) { delete req.body._id; }
-  Link.findById(req.params.id, function (err, link) {
-
-    if (err) { return handleError(res, err); }
-    if (!link) { return res.status(404).end(); }
-    if (link.user !== req.user._id) { return res.status(401).end(); }
-
-    var updated = _.merge(link, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.status(200).json(link);
-    });
   });
 };
 

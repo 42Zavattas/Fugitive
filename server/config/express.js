@@ -20,6 +20,7 @@ module.exports = function (app) {
   app.use(morgan('dev'));
   app.use(express.static(path.join(config.root, 'client')));
   app.set('appPath', 'client');
+  app.enable('trust proxy');
 
   app.use('/api', expressJwt({ secret: config.secret }));
 

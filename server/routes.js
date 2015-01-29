@@ -33,15 +33,6 @@ module.exports = function (app) {
     app.get(e, rootPageMiddleware);
   });
 
-  app.route('/*')
-    .get(function (req, res) {
-      Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
-        if (err || !link) { return res.redirect('/404'); }
-        res.redirect(link.dst);
-        if (!link.user) {
-          link.remove();
-        }
-      });
-    });
+  app.route('/*').get(link.reroute);
 
 };
