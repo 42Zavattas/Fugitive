@@ -138,18 +138,31 @@ body {
 
 .quatrecentquatre {
   font-family: $title-font;
-  color: rgba(white, 0.4);;
+  color: rgba(white, 0.1);;
   font-size: 400px;
   transform: rotate(-30deg);
   position: fixed;
   top: 0;
   left: 0;
+  @media (max-width: 600px) {
+    top: 100px;
+    font-size: 150px;
+  }
   &:before {
     content: '4O4';
   }
-  & + span {
+  & + div {
     padding-top: 100px;
-    color: rgba(white, 0.4);
+    color: rgba(white, 0.8);
     font-size: 30px;
+    div {
+      display: block;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      font-size: 20px;
+      padding: 20px;
+      margin-top: 50px;
+    }
   }
 }
