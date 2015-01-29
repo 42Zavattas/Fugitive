@@ -30,6 +30,10 @@ exports.index = function (req, res) {
  */
 exports.create = function (req, res) {
 
+  if (!req.body.dst) {
+    return res.send(500).end();
+  }
+
   if (req.user && req.user._id) {
     req.body.user = req.user._id;
   }
