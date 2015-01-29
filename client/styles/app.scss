@@ -158,11 +158,17 @@ body {
 
 .notifications {
   position: fixed;
+  z-index: 999;
   right: 1em;
   top: 1em;
   width: 250px;
   text-align: justify;
   font-family: $light-font;
+
+  @media (max-width: 600px) {
+    top: auto;
+    bottom: 1em;
+  }
 }
 
 .notif {
