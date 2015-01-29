@@ -1,6 +1,8 @@
-<h1 class="main-title">
-  <span>FuGITIvE</span>
-</h1>
+<a class="main-title" href="/">
+  <h1>
+    <span>FuGITIvE</span>
+  </h1>
+</a>
 
 <div class="container">
 
@@ -9,23 +11,33 @@
     <div class="input-main--container">
 
       <input class="input-main"
+             select-on-creation
+             autofocus
+             id="foo"
+             name="src"
+             ng-class="{ valid: linkform.src.$valid, invalid: (linkform.src.$invalid && linkform.src.$dirty) }"
              ng-model="vm.link.dst"
              required
              ng-pattern="vm.urlValidate"
              type="text"/>
 
       <button class="input-main--submit"
-              ng-show="linkform.$valid"
+              ng-show="false"
               ng-disabled="linkform.$invalid">
         create
       </button>
 
+      <div class="helper-container">
+        <span class="helper-error" ng-if="linkform.src.$invalid && linkform.src.$dirty">
+          bad url
+        </span>
+        <span class="helper-success" ng-if="linkform.$valid">
+          Press ENTER to create your unique usage link
+        </span>
+      </div>
+
     </div>
 
   </form>
-
-  <div ng-if="vm.resLink">
-    <pre>fugitive.link/{{ vm.resLink.src }}</pre>
-  </div>
 
 </div>
