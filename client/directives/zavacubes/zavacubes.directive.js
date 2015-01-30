@@ -8,6 +8,10 @@ angular.module('fugitive')
 
         var $el = $(element);
 
+        if ($el.css('display') === 'none') {
+          return;
+        }
+
         $el.css({
           position: 'absolute',
           top: 0,
@@ -32,10 +36,11 @@ angular.module('fugitive')
           var duration = Math.random() * (durationMax - durationMin) + durationMin;
           var side = Math.random() * 30 + 5;
           var left = Math.random() * (600 - side);
-          el.css({ left: left, top: 0, height: side, width: side });
+          el.css({ left: left, top: 0, height: side, width: side, opacity: 1 });
 
           el.velocity({
-            top: '360px'
+            top: '360px',
+            opacity: 0
           }, { duration: duration, easing: 'ease-in', complete: function () { animRand(el, i); } });
         }
 
