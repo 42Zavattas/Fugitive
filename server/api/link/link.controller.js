@@ -27,7 +27,6 @@ exports.reroute = function (req, res) {
 
       var dest = link.dst;
 
-
       if (link.num === 0 || (link.exp && new Date().getTime() > link.exp)) {
 
         // The link is expired, delete or redirect if set
@@ -45,17 +44,11 @@ exports.reroute = function (req, res) {
           link.save();
         }
 
-        console.log('IP === ', req.ip);
-
-        // Not expired, but will apply some cool features?
-
         if (link.geo && link.geo.length) {
-          console.log('GEO MODE');
-          var country = maxmind.getCountry(req.ip);
+          var country = maxmind.getCountry(req.ip).code;
           link.geo.forEach(function (e) {
             if (country === e.country) {
               dest = e.rpl;
-              console.log('Country detected ' + e.country);
               return ;
             }
           });

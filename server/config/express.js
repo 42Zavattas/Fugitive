@@ -21,7 +21,7 @@ module.exports = function (app) {
   app.use(morgan('dev'));
   app.use(express.static(path.join(config.root, 'client')));
   app.set('appPath', 'client');
-  app.enable('trust proxy'); // TODO should remove this if geo not working
+  app.enable('trust proxy');
   app.use(device.capture());
 
   app.use('/api', expressJwt({ secret: config.secret }));
