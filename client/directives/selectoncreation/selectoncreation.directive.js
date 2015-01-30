@@ -10,6 +10,9 @@ angular.module('fugitive')
             element[0].select();
           });
         });
+        element.bind('click', function () {
+          element[0].select();
+        });
       }
     };
   });
