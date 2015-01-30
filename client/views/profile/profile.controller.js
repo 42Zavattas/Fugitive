@@ -1,13 +1,17 @@
 'use strict';
 
 angular.module('fugitive')
-  .controller('ProfileCtrl', function ($http) {
+  .controller('ProfileCtrl', function ($http, $cookieStore) {
 
     var vm = this;
 
     this.links = [];
 
-    $http.get('/api/links').then(function (res) {
+    $http.get('/api/links', {
+      headers: {
+        Authorization : 'Bearer ' + $cookieStore.get('token')
+      }
+    }).then(function (res) {
       this.links = res.data;
     });
 
