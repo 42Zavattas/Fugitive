@@ -34,6 +34,12 @@ angular.module('fugitive')
         });
     };
 
+    vm.isUnchanged = function () {
+      console.log(vm.link.dst);
+      console.log(_last);
+      return _last === vm.link.dst;
+    };
+
     vm.lognup = function () {
       $http.post('/lognup', vm.user)
         .then(function (res) {

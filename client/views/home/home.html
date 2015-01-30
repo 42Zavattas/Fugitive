@@ -44,7 +44,7 @@
         <span class="helper-error" ng-if="linkform.src.$invalid && linkform.src.$dirty">
           Bad URL
         </span>
-        <span class="helper-success" ng-if="linkform.$valid">
+        <span class="helper-success" ng-if="linkform.$valid && !vm.isUnchanged()">
           Press ENTER
         </span>
         <span class="helper-info" ng-if="linkform.src.$pristine">
