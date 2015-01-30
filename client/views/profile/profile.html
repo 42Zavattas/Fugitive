@@ -17,13 +17,18 @@
 
   <h1>Create new</h1>
 
-  <form ng-submit="vm.create()">
+  <form ng-submit="vm.create()" name="createForm">
 
     <div class="zava-input">
-      <input type="text" ng-model="vm.newLink.dst">
+      <input type="text" ng-model="vm.newLink.dst" name="dst" required>
 
       <div class="zava-input--helpers">
-        <div class="zava-input--helper info">
+
+        <div class="zava-input--helper error" ng-if="createForm.dst.$invalid">
+          Please enter a destination link.
+        </div>
+
+        <div class="zava-input--helper info" ng-if="createForm.dst.$valid">
           Enter the link destination
         </div>
       </div>
@@ -31,10 +36,13 @@
 
 
     <div class="zava-input">
-      <input type="text" ng-model="vm.newLink.num">
+      <input ng-pattern="/^[0-9]+$/" type="text" ng-model="vm.newLink.num" name="num">
 
       <div class="zava-input--helpers">
-        <div class="zava-input--helper info">
+        <div class="zava-input--helper error" ng-if="createForm.num.$invalid">
+          This number is invalid.
+        </div>
+        <div class="zava-input--helper info" ng-if="createForm.num.$valid">
           Enter the link hit number cap
         </div>
       </div>
@@ -43,27 +51,32 @@
     <div class="zava-input">
 
       <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time">
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="none">
+        None
+      </label>
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="5">
         5 minutes
       </label>
 
       <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time">
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="30">
         30 minutes
       </label>
 
       <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time">
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="60">
         1 hour
       </label>
 
       <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time">
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="1440">
         24 hour
       </label>
 
       <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time">
+        <input ng-model="vm.newLink.time" type="radio" name="time" value="10080">
         1 week
       </label>
 

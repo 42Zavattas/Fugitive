@@ -10,7 +10,7 @@ angular.module('fugitive')
     vm.newLink = {
       dst: null,
       num: 0,
-      time: null,
+      time: 'none',
       rpl: null,
       geo: []
     };

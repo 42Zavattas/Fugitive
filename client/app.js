@@ -31,5 +31,5 @@ angular.module('fugitive', [
   .run(function ($http, $cookieStore, $rootScope, auth) {
     $http.defaults.headers.common.Authorization = 'Bearer ' + $cookieStore.get('token');
 
-    $rootScope.isLogged = auth.isLogged;
+    $rootScope.auth = auth;
   });
