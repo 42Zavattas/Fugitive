@@ -1,3 +1,6 @@
+<img class="sideback left" src="assets/explode2.png" alt=""/>
+<img class="sideback right" src="assets/explode.png" alt=""/>
+
 <div class="notifications">
   <div class="notifications--container">
     <div class="notif info">
@@ -19,29 +22,32 @@
 
   <form ng-submit="vm.lognup()" class="form-horiz" name="lognupform">
 
-    <input type="email"
-           required
-           ng-class="{ valid: lognupform.email.$valid, invalid: (lognupform.email.$invalid && lognupform.email.$dirty) }"
-           class="input-main"
-           name="email"
-           ng-model="vm.user.email"
-           focus-me="true"/>
+    <div class="zava-input">
+
+      <input type="email"
+             required
+             ng-class="{ valid: lognupform.email.$valid, invalid: (lognupform.email.$invalid && lognupform.email.$dirty) }"
+             name="email"
+             ng-model="vm.user.email"
+             focus-me="true"/>
+
+      <div class="zava-input--helpers">
+        <span class="zava-input--helper error" ng-if="lognupform.email.$invalid && lognupform.email.$dirty">
+          Invalid email
+        </span>
+        <span class="zava-input--helper success" ng-if="lognupform.$valid">
+          Email is valid
+        </span>
+        <span class="zava-input--helper info" ng-if="lognupform.email.$pristine">
+          Simply enter you email and we'll send you your connexion link.
+        </span>
+      </div>
+
+    </div>
 
     <button ng-if="false">Lognup</button>
 
   </form>
-
-  <div class="helper-container">
-    <span class="helper-error" ng-if="lognupform.email.$invalid && lognupform.email.$dirty">
-      Invalid email
-    </span>
-    <span class="helper-success" ng-if="lognupform.$valid">
-      Email is valid
-    </span>
-    <span class="helper-info" ng-if="lognupform.email.$pristine">
-      Simply enter you email and we'll send you your connexion link.
-    </span>
-  </div>
 
   <p ng-if="vm.status == 'OK'" class="context-info">
     Mail has been sent.
