@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fugitive')
-  .controller('HomeCtrl', function ($http, $rootScope, $location) {
+  .controller('HomeCtrl', function ($http, $rootScope, $location, $scope) {
 
     var vm = this;
 
@@ -22,6 +22,7 @@ angular.module('fugitive')
       $http.post('/create', vm.link)
         .then(function (res) {
           vm.link.dst = _prefix + '/' + res.data.src;
+          $scope.linkform.$setPristine();
           $rootScope.$broadcast('linkCreated');
 
         })
@@ -34,7 +35,6 @@ angular.module('fugitive')
       $http.post('/lognup', vm.user)
         .then(function (res) {
           vm.uuid = res.data;
-          console.log(vm.uuid);
         })
         .catch(function (err) {
           console.log(err);
