@@ -1,11 +1,16 @@
 <div class="content">
+  <em>My links</em>
   <div>
-    <div ng-repeat="link in vm.links">{{ link }} <a ng-click="vm.delete(link)">delete</a></div>
+    <div ng-repeat="link in vm.links">
+      <code>http://fugitive.link/{{ link.src }}</code>
+      <span>{{ link.dst }}</span>
+      <i class="icon-bin" ng-click="vm.delete(link)"></i>
+    </div>
   </div>
+
   <button ng-click="vm.create()">ADD</button>
-  <input type="text" np-model="newLink.dst">
+  <input type="text" ng-model="newLink.dst">
   <input type="number" ng-model="newLink.num">
-  <input type="date" ng-modelf="newLink.exp">
   <input type="text" ng-model="newLinx.spl">
   ---
   <input ng-model="newLink" type="text" placeholder="country">
