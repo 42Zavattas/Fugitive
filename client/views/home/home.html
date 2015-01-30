@@ -29,6 +29,8 @@
              required
              ng-pattern="vm.urlValidate"/>
 
+      <zava-cubes></zava-cubes>
+
       <div class="zava-input--helpers">
         <div class="zava-input--helper error anim-fade"
               ng-if="linkform.src.$invalid && linkform.src.$dirty">
@@ -56,7 +58,7 @@
   </form>
 
   <div class="centered">
-    <a href="/lognup">
+    <a href="/lognup" class="glass-link">
       <i class="icon-user"></i> Lognup for more features
     </a>
   </div>

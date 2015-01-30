@@ -353,4 +353,14 @@ body {
   top: -2em;
 }
 
+.glass-link {
+  background: rgba(lighten($cbase, 2), .5);
+  padding: 1em;
+  z-index: 1;
+  &:hover {
+    background: rgba(lighten($cbase, 2), .9);
+  }
+}
+
 @import "zava-input";
+@import "cubes";
