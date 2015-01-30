@@ -343,6 +343,14 @@ body {
   font-size: 64px;
   text-align: center;
   color: rgba(white, .2);
+  position: relative;
+  height: 0;
+  i {
+    left: auto;
+    right: auto;
+    display: block;
+    margin-top: -100px;
+  }
 }
 
 .floating-snip {
