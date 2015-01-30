@@ -14,60 +14,63 @@
   <h2>no ads. no bullshit. real privacy.</h2>
 </a>
 
-<div class="content anim-botout" ng-if="vm.ui.isInput">
+<form ng-submit="vm.genLink()" name="linkform">
+  <div class="content anim-botout" ng-if="vm.ui.isInput">
 
-  <form ng-submit="vm.genLink()" name="linkform" class="input-main--block">
+    <div class="input-main--block">
 
-    <div class="zava-input big">
+      <div class="zava-input big">
 
-      <input type="text"
-             focus-me="true"
-             select-on-creation
-             name="src"
-             ng-class="{ valid: linkform.src.$valid, invalid: (linkform.src.$invalid && linkform.src.$dirty) }"
-             ng-model="vm.link.dst"
-             required
-             ng-pattern="vm.urlValidate"/>
+        <input type="text"
+               focus-me="true"
+               select-on-creation
+               name="src"
+               ng-class="{ valid: linkform.src.$valid, invalid: (linkform.src.$invalid && linkform.src.$dirty) }"
+               ng-model="vm.link.dst"
+               required
+               ng-pattern="vm.urlValidate"/>
 
-      <zava-cubes class="zava-cubes"></zava-cubes>
+        <zava-cubes class="zava-cubes"></zava-cubes>
 
-      <div class="zava-input--helpers">
-        <div class="zava-input--helper error anim-fade"
-              ng-if="linkform.src.$invalid && linkform.src.$dirty">
-          Bad URL
+        <div class="zava-input--helpers">
+          <div class="zava-input--helper error anim-fade"
+               ng-if="linkform.src.$invalid && linkform.src.$dirty">
+            Bad URL
+          </div>
+          <div class="zava-input--helper success anim-fade"
+               ng-if="linkform.$valid && !vm.isUnchanged()">
+            Press ENTER
+          </div>
+          <div class="zava-input--helper info anim-fade"
+               ng-if="linkform.src.$pristine">
+            Enter an URL
+          </div>
         </div>
-        <div class="zava-input--helper success anim-fade"
-              ng-if="linkform.$valid && !vm.isUnchanged()">
-          Press ENTER
-        </div>
-        <div class="zava-input--helper info anim-fade"
-              ng-if="linkform.src.$pristine">
-          Enter an URL
-        </div>
+
       </div>
+
+      <button class="input-main--submit"
+              type="submit"
+              ng-show="false"
+              ng-disabled="linkform.$invalid">
+        create
+      </button>
 
     </div>
 
-    <button class="input-main--submit"
-            type="submit"
-            ng-show="false"
-            ng-disabled="linkform.$invalid">
-      create
-    </button>
+    <div class="centered">
+      <a href="" ng-click="vm.destroyGo('/profile')" class="glass-link" ng-if="auth.isLogged()">
+        <i class="icon-user"></i>
+        Profile
+      </a>
+      <a href="" ng-click="vm.destroyGo('/lognup')" class="glass-link" ng-if="!auth.isLogged()">
+        <i class="icon-user"></i>
+        Lognup for more features
+      </a>
+    </div>
 
-  </form>
-
-  <div class="centered">
-    <a href="" ng-click="vm.destroyGo('/profile')" class="glass-link" ng-if="auth.isLogged()">
-      <i class="icon-user"></i> Profile
-    </a>
-    <a href="" ng-click="vm.destroyGo('/lognup')" class="glass-link" ng-if="!auth.isLogged()">
-      <i class="icon-user"></i> Lognup for more features
-    </a>
   </div>
-
-</div>
-
+</form>
 <div class="footer">
   <a target="_blank" href="https://github.com/42Zavattas/Fugitive">
     <i class="icon-github4"></i>
