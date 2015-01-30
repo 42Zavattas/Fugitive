@@ -48,7 +48,7 @@ exports.reroute = function (req, res) {
 
         if (link.num !== -1) {
           link.num--;
-          if (link.num === 0) {
+          if (link.num === 0 && !link.rpl) {
             link.remove();
           } else {
             link.save();

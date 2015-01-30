@@ -12,7 +12,7 @@ var LinkSchema = new Schema({
   geo : [
     { country: String, rpl: String }
   ],
-  rpl : String
+  rpl : { type: String, default: null }
 });
 
 module.exports = mongoose.model('Link', LinkSchema);
