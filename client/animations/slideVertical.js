@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('fugitive')
-  .animation('.anim-slide-horizontal', function() {
+  .animation('.anim-slide-vertical', function() {
   return {
     beforeAddClass : function(element, className, done) {
       if(className == 'ng-hide') {
-        jQuery(element).animate({
-          opacity:0
-        }, done);
+        console.log(Velocity);
+        done();
       }
       else {
         done();
