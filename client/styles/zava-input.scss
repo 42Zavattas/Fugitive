@@ -9,7 +9,7 @@
     padding: 1em;
     width: 100%;
 
-    background: rgba(black, .1);
+    background: darken($cbase, 2);
     color: darken(white, 45);
     font-family: inherit;
 
@@ -53,6 +53,10 @@
   position: relative;
 
   > .zava-input--helper {
+
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 
     position: absolute;
     top: 0;

@@ -33,16 +33,16 @@
              ng-pattern="vm.urlValidate"/>
 
       <div class="zava-input--helpers">
-        <div class="zava-input--helper error anim-slide-vertical"
-              ng-show="linkform.src.$invalid && linkform.src.$dirty">
+        <div class="zava-input--helper error anim-fade"
+              ng-if="linkform.src.$invalid && linkform.src.$dirty">
           Bad URL
         </div>
-        <div class="zava-input--helper success anim-slide-vertical"
-              ng-show="linkform.$valid && !vm.isUnchanged()">
+        <div class="zava-input--helper success anim-fade"
+              ng-if="linkform.$valid && !vm.isUnchanged()">
           Press ENTER
         </div>
-        <div class="zava-input--helper info anim-slide-vertical"
-              ng-show="linkform.src.$pristine">
+        <div class="zava-input--helper info anim-fade"
+              ng-if="linkform.src.$pristine">
           Enter an URL
         </div>
       </div>

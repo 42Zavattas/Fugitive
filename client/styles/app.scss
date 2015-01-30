@@ -242,7 +242,7 @@ body {
   border-radius: 2px;
   box-shadow: rgba(black, .2) 0 2px 3px;
   transition: background-color ease-out 100ms;
-  cursor: pointer;
+  cursor: default;
   margin-bottom: .5em;
 
   &.info {
