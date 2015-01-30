@@ -85,6 +85,8 @@ body {
 
 .content {
 
+  position: relative;
+
   @media (max-width: 600px) {
     padding: 0 1em;
   }
@@ -330,5 +332,20 @@ body {
 }
 
 .context-info {
-  color: white;
+  position: absolute;
+  top: 5.5em;
+  right: 0;
+  color: rgba(white, .3);
+}
+
+.big-icon {
+  font-size: 64px;
+  text-align: center;
+  color: rgba(white, .2);
+}
+
+.floating-snip {
+  position: absolute;
+  left: 0;
+  top: -2em;
 }

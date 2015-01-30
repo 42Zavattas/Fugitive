@@ -6,19 +6,22 @@
   </div>
 </div>
 
+<div class="big-icon">
+  <i class="icon-mail"></i>
+</div>
+
 <div class="content centered">
 
-  <div class="centered marged">
-    <a href="/">
-      <i class="icon-undo2"></i>
-      Home
-    </a>
-  </div>
+  <a class="floating-snip" href="/">
+    <i class="icon-undo2"></i>
+    Home
+  </a>
 
   <form ng-submit="vm.lognup()" class="form-horiz" name="lognupform">
 
     <input type="email"
            required
+           ng-class="{ valid: lognupform.email.$valid, invalid: (lognupform.email.$invalid && lognupform.email.$dirty) }"
            class="input-main"
            name="email"
            ng-model="vm.user.email"
