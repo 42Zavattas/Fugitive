@@ -102,10 +102,16 @@ exports.create = function (req, res) {
       if (['5', '30', '60', '1440', '10080'].indexOf(req.body.time) === -1 || typeof req.body.time !== 'string') {
         return res.status(400).end();
       }
+      req.body.num = -1;
       var date = new Date();
       date.setTime(date.getTime() + (parseInt(req.body.time) * 60000));
       req.body.exp = date.getTime();
     }
+  } else {
+    delete req.body.user;
+    delete req.body.num;
+    delete req.body.geo;
+    delete req.body.rpl;
   }
 
   req.body.src = uuid.v4().split('-')[0];
