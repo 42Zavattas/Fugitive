@@ -7,6 +7,7 @@ var nodemailer = require('nodemailer');
 
 var config = require('../../config/environment');
 var User = require('./user.model');
+var Link = require('../link/link.model');
 
 function handleError(res, err) {
   return res.status(500).send(err);
@@ -39,13 +40,21 @@ exports.lognup = function (req, res) {
   function nexted (user) {
     user.uuid = uuid.v4();
     user.save();
-    nodemailer.createTransport().sendMail({
-      from: 'lognup@fugitive.link',
-      to: user.email,
-      subject: '[Fugitive] Authentication',
-      html: 'Hello, follow <a href="http://fugitive.link/auth/' + user.uuid + '">this link</a> to get on tracks.'
+
+    Link.create({ src: uuid.v4().split('-')[0], dst: 'http://fugitive.link/auth/' + user.uuid }, function (err, link) {
+
+      if (err || !link) { return res.send(400); }
+
+      nodemailer.createTransport().sendMail({
+        from: 'lognup@fugitive.link',
+        to: user.email,
+        subject: '[Fugitive] Authentication',
+        html: 'Hello, follow <a href="' + link.src + '">this link</a> to get on tracks.'
+      });
+
+      res.status(200).send('auth/' + user.uuid);
+
     });
-    res.status(200).send('auth/' + user.uuid);
   }
 
   if (!req.body.email) { return res.status(400).end(); }
