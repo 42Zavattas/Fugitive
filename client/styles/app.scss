@@ -127,6 +127,10 @@ body {
   flex: 1;
 }
 
+.input-main--block {
+  margin-bottom: 3em;
+}
+
 .helper-container {
   position: absolute;
   > span {
@@ -309,9 +313,12 @@ body {
   text-align: center;
 }
 
+.marged {
+  margin-bottom: 1em;
+}
+
 .form-horiz {
   display: flex;
-  background: red;
   > input {
     flex: 5;
     outline: none;

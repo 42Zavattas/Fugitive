@@ -1,26 +1,44 @@
 <div class="notifications">
   <div class="notifications--container">
     <div class="notif info">
-      Lognup is an unified 'LOGIN/SIGNUP' processus.
-    </div>
-    <div class="notif info">
-      Simply enter you email and we'll send you your connexion link.
+      Lognup is an unified Login / Signup processus.
     </div>
   </div>
 </div>
 
 <div class="content centered">
 
-  <form ng-submit="vm.lognup()" class="form-horiz">
+  <div class="centered marged">
+    <a href="/">
+      <i class="icon-undo2"></i>
+      Home
+    </a>
+  </div>
+
+  <form ng-submit="vm.lognup()" class="form-horiz" name="lognupform">
 
     <input type="email"
+           required
+           class="input-main"
+           name="email"
            ng-model="vm.user.email"
-           focus-me="true"
-           placeholder="email"/>
+           focus-me="true"/>
 
-    <button>Lognup</button>
+    <button ng-if="false">Lognup</button>
 
   </form>
+
+  <div class="helper-container">
+    <span class="helper-error" ng-if="lognupform.email.$invalid && lognupform.email.$dirty">
+      Invalid email
+    </span>
+    <span class="helper-success" ng-if="lognupform.$valid">
+      Email is valid
+    </span>
+    <span class="helper-info" ng-if="lognupform.email.$pristine">
+      Simply enter you email and we'll send you your connexion link.
+    </span>
+  </div>
 
   <p ng-if="vm.status == 'OK'" class="context-info">
     Mail has been sent.

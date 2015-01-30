@@ -19,13 +19,13 @@
 
 <div class="content">
 
-  <form ng-submit="vm.genLink()" name="linkform">
+  <form ng-submit="vm.genLink()" name="linkform" class="input-main--block">
 
     <div class="input-main--container">
 
       <input class="input-main"
              select-on-creation
-             autofocus
+             focus-me="true"
              id="foo"
              name="src"
              ng-class="{ valid: linkform.src.$valid, invalid: (linkform.src.$invalid && linkform.src.$dirty) }"
@@ -55,6 +55,12 @@
     </div>
 
   </form>
+
+  <div class="centered">
+    <a href="/lognup">
+      <i class="icon-user"></i> Lognup for more features
+    </a>
+  </div>
 
 </div>
 
