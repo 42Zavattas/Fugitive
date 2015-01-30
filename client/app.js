@@ -18,6 +18,13 @@ angular.module('fugitive', [
 
   .factory('httpInterceptor', function ($q, $location, $cookieStore, auth) {
     return {
+      request: function (config) {
+        var opti = $cookieStore.get('token');
+        if (opti) {
+          config.headers.Authorization = 'Bearer ' + opti;
+        }
+        return config;
+      },
       responseError: function (response) {
         if (response.status === 401) {
           $location.path('/');
@@ -28,8 +35,6 @@ angular.module('fugitive', [
     }
   })
 
-  .run(function ($http, $cookieStore, $rootScope, auth) {
-    $http.defaults.headers.common.Authorization = 'Bearer ' + $cookieStore.get('token');
-
+  .run(function ($rootScope, auth) {
     $rootScope.auth = auth;
   });

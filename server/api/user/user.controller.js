@@ -80,6 +80,8 @@ exports.lognup = function (req, res) {
  */
 exports.destroy = function (req, res) {
 
+  console.log(req.user)
+
   User.findById(req.user._id, function (err, user) {
     if (err) { return handleError(res, err); }
     if (!user) { return res.status(404).end(); }
