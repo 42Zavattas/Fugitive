@@ -7,38 +7,43 @@ var request = require('supertest');
 
 describe('GET /api/users', function () {
 
-  it('should create a user', function (done) {
+  it('should fail', function (done) {
     request(server)
-      .post('/api/users')
-      .send({ email: 'test@test.com' })
-      .expect(200)
-      .expect('Content-Type', /json/)
-      .end(function (err, res) {
+      .post('/lognup')
+      .send({ nothingInteresting: '' })
+      .expect(400)
+      .end(function (err) {
         if (err) { return done(err); }
-        console.log(res);
         done();
       });
   });
 
-  it('should only send an email to an exiting user', function (done) {
+  it('should create a user', function (done) {
     request(server)
-      .post('/api/users')
+      .post('/lognup')
       .send({ email: 'test@test.com' })
       .expect(200)
-      .expect('Content-Type', /json/)
-      .end(function (err, res) {
+      .end(function (err) {
         if (err) { return done(err); }
-        console.log(res);
+        done();
+      });
+  });
+
+  it('should update auth link of existing user', function (done) {
+    request(server)
+      .post('/lognup')
+      .send({ email: 'test@test.com' })
+      .expect(200)
+      .end(function (err) {
+        if (err) { return done(err); }
         done();
       });
   });
 
   it('should delete me', function (done) {
-    /*
-    request(server)
-      .delete('/api/users')
-      .send();
-    */
+
+    done();
+
   });
 
 

@@ -2,8 +2,7 @@
 
 describe('Directive: selectOnCreation', function () {
 
-  beforeEach(module('oggApp'));
-  beforeEach(module('app/directives/selectoncreation/selectoncreation.html'));
+  beforeEach(module('fugitive'));
 
   var element, scope;
 

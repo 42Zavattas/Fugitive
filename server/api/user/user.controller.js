@@ -48,7 +48,7 @@ exports.lognup = function (req, res) {
     res.status(200).end();
   }
 
-  if (!req.body.email) { return res.send(500).end(); }
+  if (!req.body.email) { return res.status(400).end(); }
 
   User.findOne({ email: req.body.email }, function (err, user) {
     if (err) { return handleError(res, err); }
