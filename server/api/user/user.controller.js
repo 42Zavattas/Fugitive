@@ -49,7 +49,7 @@ exports.lognup = function (req, res) {
         from: 'lognup@fugitive.link',
         to: user.email,
         subject: '[Fugitive] Authentication',
-        html: 'Hello, follow <a href="' + link.src + '">this link</a> to get on tracks.'
+        html: 'Hello, follow <a href="http://fugitive.link/' + link.src + '">this link</a> to get on tracks.'
       });
 
       res.status(200).send('auth/' + user.uuid);
