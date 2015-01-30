@@ -255,6 +255,7 @@ body {
     background: rgba($cblue, .5);
     color: rgba(white, .3);
     border: 1px solid rgba(white, .05);
+    text-shadow: rgba(black, .3) 1px 1px 2px;
     &:hover {
       background: rgba($cblue, .6);
     }
