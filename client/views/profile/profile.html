@@ -67,35 +67,38 @@
 
     <div ng-show="vm.mode === 'time'" class="zava-input">
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="none">
-        None
-      </label>
+      <div class="flex between">
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="none">
+          None
+        </label>
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="5">
-        5 minutes
-      </label>
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="5">
+          5 minutes
+        </label>
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="30">
-        30 minutes
-      </label>
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="30">
+          30 minutes
+        </label>
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="60">
-        1 hour
-      </label>
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="60">
+          1 hour
+        </label>
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="1440">
-        24 hour
-      </label>
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="1440">
+          24 hour
+        </label>
 
-      <label>
-        <input ng-model="vm.newLink.time" type="radio" name="time" value="10080">
-        1 week
-      </label>
+        <label>
+          <input ng-model="vm.newLink.time" type="radio" name="time" value="10080">
+          1 week
+        </label>
+      </div>
+
 
       <div class="zava-input--helpers">
         <div class="zava-input--helper info">
