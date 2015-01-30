@@ -91,6 +91,10 @@ exports.create = function (req, res) {
 
   if (req.body.exp) { delete req.body.exp; }
 
+  if (req.body.num === 0 && req.body.time && req.body.time !== 'none') {
+    req.body.num = -1;
+  }
+
   if ((!req.body.num || req.body.num < 1) && (!req.body.time || req.body.time === 'none')) {
     req.body.num = 1;
   }
