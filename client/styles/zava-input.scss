@@ -1,0 +1,94 @@
+@import "variables";
+
+.zava-input {
+
+  input[type=text] {
+
+    outline: none;
+
+    padding: 1em;
+    width: 100%;
+
+    background: rgba(black, .1);
+    color: darken(white, 45);
+    font-family: inherit;
+
+    border-top: none;
+    border-bottom: 3px solid rgba(black, .3);
+    text-shadow: rgba(black, .5) 0 2px 3px;
+    border-left: none;
+    border-right: none;
+
+    &:focus {
+      box-shadow: rgba(black, .4) 0 4px 5px;
+    }
+
+    &.valid {
+      border-color: $cgreen;
+    }
+
+    &.invalid {
+      border-color: $cred;
+    }
+
+  }
+
+  &.big {
+
+    input[type=text] {
+
+      font-size: 24px;
+      font-family: monospace;
+
+    }
+
+  }
+
+}
+
+.zava-input--helpers {
+
+  height: 2em;
+  margin-top: .5em;
+  position: relative;
+
+  > .zava-input--helper {
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    font-size: 13px;
+    padding: .5em;
+
+    background: $cblue;
+    border: 1px solid rgba(white, .05);
+    box-shadow: rgba(black, .2) 0 0 2px;
+    color: rgba(white, .5);
+
+    &.error {
+      background: $cred;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .3);
+    }
+
+    &.success {
+      background: $cgreen;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .5);
+    }
+
+    &.info {
+      background: $cblue;
+      border: 1px solid rgba(white, .05);
+      box-shadow: rgba(black, .2) 0 0 2px;
+      color: rgba(white, .5);
+    }
+
+  }
+
+}

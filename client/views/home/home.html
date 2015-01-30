@@ -21,38 +21,42 @@
 
   <form ng-submit="vm.genLink()" name="linkform" class="input-main--block">
 
-    <div class="input-main--container">
+    <div class="zava-input big">
 
-      <input class="input-main"
-             select-on-creation
+      <input type="text"
              focus-me="true"
-             id="foo"
+             select-on-creation
              name="src"
              ng-class="{ valid: linkform.src.$valid, invalid: (linkform.src.$invalid && linkform.src.$dirty) }"
              ng-model="vm.link.dst"
              required
-             ng-pattern="vm.urlValidate"
-             type="text"/>
+             ng-pattern="vm.urlValidate"/>
+
+      <div class="zava-input--helpers">
+        <div class="zava-input--helper error anim-slide-vertical"
+              ng-show="linkform.src.$invalid && linkform.src.$dirty">
+          Bad URL
+        </div>
+        <div class="zava-input--helper success anim-slide-vertical"
+              ng-show="linkform.$valid && !vm.isUnchanged()">
+          Press ENTER
+        </div>
+        <div class="zava-input--helper info anim-slide-vertical"
+              ng-show="linkform.src.$pristine">
+          Enter an URL
+        </div>
+      </div>
 
       <button class="input-main--submit"
+              type="submit"
               ng-show="false"
               ng-disabled="linkform.$invalid">
         create
       </button>
 
-      <div class="helper-container">
-        <span class="helper-error" ng-if="linkform.src.$invalid && linkform.src.$dirty">
-          Bad URL
-        </span>
-        <span class="helper-success" ng-if="linkform.$valid && !vm.isUnchanged()">
-          Press ENTER
-        </span>
-        <span class="helper-info" ng-if="linkform.src.$pristine">
-          Enter an URL
-        </span>
-      </div>
-
     </div>
+
+    <p>dlkjdlkdjldkjdl</p>
 
   </form>
 

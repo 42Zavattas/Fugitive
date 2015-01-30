@@ -1,11 +1,4 @@
-$title-font: 'kontanterbold';
-$light-font: 'exo_2extra_light';
-
-$cbase: #0D1822;
-$cgreen: #395216;
-$cred: #351412;
-$corange: #604500;
-$cblue: #003939;
+@import 'variables';
 
 * {
   box-sizing: border-box;
@@ -19,6 +12,7 @@ a {
 body {
   background: $cbase;
   font-family: $light-font;
+  color: darken(white, 50);
 }
 
 .container {
@@ -359,3 +353,5 @@ body {
   left: 0;
   top: -2em;
 }
+
+@import "zava-input";
