@@ -223,8 +223,7 @@ body {
   font-family: $light-font;
 
   @media (max-width: 600px) {
-    top: auto;
-    bottom: 1em;
+    display: none;
   }
 
   .notifications--container {
