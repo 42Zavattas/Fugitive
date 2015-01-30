@@ -11,9 +11,8 @@
   <button ng-click="vm.deleteMyAccount()">Delete me <i class="icon-bin"></i></button>
   <h1>My links</h1>
   <div>
-    <div ng-repeat="link in vm.links">
+    <div ng-repeat="link in vm.links" class="flex between">
       <input value="http://fugitive.link/{{ link.src }}" select-on-creation readonly class="zavinsible" type="text">
-      to
       <span>{{ link.dst }}</span>
       <i class="icon-bin" ng-click="vm.delete(link)"></i>
     </div>
@@ -41,8 +40,19 @@
       </div>
     </div>
 
+    <hr>
+    <h3 class="emphasied">The following option are all optional</h3>
 
-    <div class="zava-input">
+    <div class="zava-switch flex">
+      <span ng-class="{ active: vm.mode === 'hit' }" ng-click="vm.switchMode('hit')">
+        <span>Hit cap</span> <i class="icon-link"></i>
+      </span>
+      <span ng-class="{ active: vm.mode === 'time' }" ng-click="vm.switchMode('time')">
+         <i class="icon-hour-glass"></i> <span>Time</span>
+      </span>
+    </div>
+
+    <div ng-show="vm.mode === 'hit'" class="zava-input">
       <input ng-pattern="/^[0-9]+$/" type="text" ng-model="vm.newLink.num" name="num">
 
       <div class="zava-input--helpers">
@@ -55,7 +65,7 @@
       </div>
     </div>
 
-    <div class="zava-input">
+    <div ng-show="vm.mode === 'time'" class="zava-input">
 
       <label>
         <input ng-model="vm.newLink.time" type="radio" name="time" value="none">

@@ -17,6 +17,18 @@ body {
 
 .flex {
   display: flex;
+  &.between {
+    justify-content: space-between;
+  }
+}
+
+.emphasied {
+  font-style: italic;
+}
+
+hr {
+  border: 1px solid rgba(white, .1);
+  box-shadow: rgba(black, .5) 0 1px;
 }
 
 .container {

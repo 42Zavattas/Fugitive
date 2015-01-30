@@ -5,7 +5,7 @@
   width: 100%;
 
   input[type=text],
-  input[type=email] {
+  input[type=email]{
 
     outline: none;
 
@@ -131,11 +131,37 @@
   }
 }
 
+.zava-switch {
+  margin-bottom: 20px;
+  > span {
+    width: 50%;
+    height: 40px;
+    cursor: pointer;
+    background: #0a131b;
+    border: 1px solid rgba(#0a131b, .5);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    *:first-child {
+      flex: 1;
+    }
+    &.active {
+      color: $cgreen;
+      outline: 1px solid $cgreen;
+    }
+  }
+  span + span {
+    margin-left: 20px;
+  }
+}
+
 .zavinsible {
   border: none;
   background: transparent;
   outline: none;
   cursor: pointer;
+  width: 250px;
 }
 
 i.icon-bin {

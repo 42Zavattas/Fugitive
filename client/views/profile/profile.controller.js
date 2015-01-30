@@ -9,10 +9,19 @@ angular.module('fugitive')
 
     vm.newLink = {
       dst: null,
-      num: -1,
+      num: 1,
       time: 'none',
       rpl: null,
       geo: []
+    };
+
+    vm.mode = null;
+
+    vm.switchMode = function (mode) {
+      vm.newLink.time = 'none';
+      vm.newLink.num = 1;
+      if (mode === vm.mode) { return vm.mode = null; }
+      vm.mode = mode;
     };
 
     vm.newGeo = { country: '' };
@@ -20,7 +29,6 @@ angular.module('fugitive')
     vm.addGeo = function () {
       if (!vm.newGeo.country || !vm.newGeo.rpl) { return ; }
       if (vm.newLink.geo.map(function (e) { return e.country; }).indexOf(vm.newGeo.country) !== -1) {
-        // TODO show error?
         return ;
       }
       vm.newLink.geo.push({ country: vm.newGeo.country, rpl: vm.newGeo.rpl });
