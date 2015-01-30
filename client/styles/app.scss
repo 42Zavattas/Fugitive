@@ -218,9 +218,8 @@ body {
   user-select: none;
   -webkit-user-select: none;
   right: 1em;
-  left: 1em;
   top: 1em;
-  text-align: justify;
+  text-align: left;
   font-family: $light-font;
 
   @media (max-width: 600px) {
@@ -244,6 +243,7 @@ body {
   box-shadow: rgba(black, .2) 0 2px 3px;
   transition: background-color ease-out 100ms;
   cursor: pointer;
+  margin-bottom: .5em;
 
   &.info {
     background: rgba($cblue, .5);
@@ -300,4 +300,28 @@ body {
   text-align: center;
   color: rgba(white, .3);
   font-size: 18px;
+  a {
+    color: rgba(white, .3);
+  }
+}
+
+.centered {
+  text-align: center;
+}
+
+.form-horiz {
+  display: flex;
+  background: red;
+  > input {
+    flex: 5;
+    outline: none;
+    padding: 1em;
+  }
+  > button {
+    flex: 1;
+  }
+}
+
+.context-info {
+  color: white;
 }
