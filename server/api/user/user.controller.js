@@ -38,10 +38,14 @@ exports.lognup = function (req, res) {
 
   function nexted (user) {
     user.uuid = uuid.v4();
-    console.log(user.uuid);
     user.save();
-    res.json(user.uuid);
-    // Send mail
+    nodemailer.createTransport().sendMail({
+      from: 'lognup@fugitive.link',
+      to: user.email,
+      subject: '[Fugitive] Authentication',
+      html: 'Hello, follow <a href="http://fugitive.link/auth/' + user.uuid + '">this link</a> to get on tracks.'
+    });
+    res.status(200).end();
   }
 
   if (!req.body.email) { return res.send(500).end(); }
