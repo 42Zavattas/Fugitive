@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fugitive')
-  .controller('LognupCtrl', function ($http, $location) {
+  .controller('LognupCtrl', function ($http, $location, $scope) {
 
     var vm = this;
 
@@ -21,6 +21,7 @@ angular.module('fugitive')
           vm.status = 'OK';
           vm.user.email = '';
           vm.mockLink = _prefix + '/' + res.data;
+          $scope.lognupform.$setPristine();
         })
         .catch(function (err) {
           console.log(err);
