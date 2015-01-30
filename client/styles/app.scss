@@ -163,7 +163,7 @@ body {
 
 .quatrecentquatre {
   font-family: $title-font;
-  color: rgba(white, 0.1);;
+  color: rgba(black, 0.2);;
   font-size: 400px;
   transform: rotate(-30deg);
   position: fixed;
@@ -175,7 +175,8 @@ body {
     font-size: 150px;
   }
   &:before {
-    content: '4O4';
+    content: '404';
+    letter-spacing: -85px;
   }
   & + div {
     padding-top: 100px;
@@ -186,7 +187,6 @@ body {
       text-align: center;
       text-shadow: rgba(black, .5) 0 4px 0;
       &:hover {
-        text-shadow: none;
         i {
           color: white;
           border-color: white;
@@ -195,10 +195,9 @@ body {
       }
       a i {
         padding: 10px;
-        border: 5px solid $cblue;
         box-shadow: rgba(black, .5) 0 4px 0;
         border-radius: 50%;
-        color: $cblue;
+        color: $corange;
       }
       @media (max-width: 600px) {
         margin-top: 200px;

@@ -1,17 +1,85 @@
 <div class="content">
-  <em>My links</em>
+  <h1>My links</h1>
   <div>
     <div ng-repeat="link in vm.links">
-      <code>http://fugitive.link/{{ link.src }}</code>
+      <input value="http://fugitive.link/{{ link.src }}" select-on-creation readonly class="zavinsible" type="text">
+      to
       <span>{{ link.dst }}</span>
       <i class="icon-bin" ng-click="vm.delete(link)"></i>
+    </div>
+    <div ng-if="!vm.links.length">
+      Nothing for now, create a custom link by using the following form.
+    </div>
+  </div>
+
+  <h1>Create new</h1>
+
+  <div class="zava-input">
+    <input type="text" ng-model="newLink.dst">
+
+    <div class="zava-input--helpers">
+      <div class="zava-input--helper info">
+        Enter the link destination
+      </div>
+    </div>
+  </div>
+
+
+  <div class="zava-input">
+    <input type="text" ng-model="newLink.num">
+
+    <div class="zava-input--helpers">
+      <div class="zava-input--helper info">
+        Enter the link hit number cap
+      </div>
+    </div>
+  </div>
+
+  <div class="zava-input">
+
+    <label>
+      <input type="radio" name="time">
+      5 minutes
+    </label>
+
+    <label>
+      <input type="radio" name="time">
+      30 minutes
+    </label>
+
+    <label>
+      <input type="radio" name="time">
+      1 hour
+    </label>
+
+    <label>
+      <input type="radio" name="time">
+      24 hour
+    </label>
+
+    <label>
+      <input type="radio" name="time">
+      1 week
+    </label>
+
+    <div class="zava-input--helpers">
+      <div class="zava-input--helper info">
+        Select the link expiration time
+      </div>
+    </div>
+  </div>
+
+  <div class="zava-input">
+    <input type="text" ng-model="newLink.spl">
+
+    <div class="zava-input--helpers">
+      <div class="zava-input--helper info">
+        Enter a new destination upon expiration
+      </div>
     </div>
   </div>
 
   <button ng-click="vm.create()">ADD</button>
-  <input type="text" ng-model="newLink.dst">
-  <input type="number" ng-model="newLink.num">
-  <input type="text" ng-model="newLinx.spl">
   ---
   <input ng-model="newLink" type="text" placeholder="country">
   <input type="text" placeholder="replace">
