@@ -1,5 +1,11 @@
 @import 'variables';
 
+.zava-cubes {
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
 .zava-cube {
   background: rgba(black, .5);
   position: absolute;

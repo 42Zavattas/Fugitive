@@ -8,6 +8,10 @@ angular.module('fugitive')
 
         var $el = $(element);
 
+        if ($el.css('display') === 'none') {
+          return;
+        }
+
         $el.css({
           position: 'absolute',
           top: 0,
