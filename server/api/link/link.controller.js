@@ -118,10 +118,12 @@ exports.destroy = function (req, res) {
   Link.findById(req.params.id, function (err, link) {
     if (err) { return handleError(res, err); }
     if (!link) { return res.status(404).end(); }
-    if (link.user !== req.user._id) { return res.status(401).end(); }
+    if (link.user.toString() !== req.user._id) { return res.status(401).end(); }
+
     link.remove(function (err) {
       if (err) { return handleError(res, err); }
-      return res.status(204);
+      return res.status(204).end();
     });
+
   });
 };
