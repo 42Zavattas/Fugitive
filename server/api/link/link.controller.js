@@ -15,7 +15,6 @@ function handleError(res, err) {
 exports.reroute = function (req, res) {
   Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
     if (err || !link) { return res.redirect('/404'); }
-
     if (!link.user) {
       res.redirect(link.dst);
       link.remove();
@@ -23,7 +22,7 @@ exports.reroute = function (req, res) {
 
       var dest = link.dst;
 
-      if (link.num === 0 || (new Date().getTime() > link.exp)) {
+      if (link.num === 0 || (link.exp && new Date().getTime() > link.exp)) {
         // The link is expired, delete or redirect if set
         if (link.rpl) {
           dest = link.rpl;
@@ -35,6 +34,7 @@ exports.reroute = function (req, res) {
 
         if (link.num !== -1) {
           link.num--;
+          link.save();
         }
 
         console.log('IP === ', req.ip);
@@ -89,7 +89,7 @@ exports.create = function (req, res) {
 
   if (req.body.exp) { delete req.body.exp; }
 
-  if ((!req.body.num || req.body.num < 1) && (!req.body.time)) {
+  if ((!req.body.num || req.body.num < 1) && (!req.body.time || req.body.time === 'none')) {
     req.body.num = 1;
   }
 
