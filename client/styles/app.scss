@@ -13,6 +13,7 @@ $cblue: #003939;
 
 a {
   text-decoration: none;
+  color: $cblue;
 }
 
 body {
@@ -287,4 +288,16 @@ body {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.footer {
+  background: rgba(black, .2);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .5em;
+  text-align: center;
+  color: rgba(white, .3);
+  font-size: 18px;
 }
