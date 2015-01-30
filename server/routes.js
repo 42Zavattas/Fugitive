@@ -29,7 +29,7 @@ module.exports = function (app) {
       res.status(404).end();
     });
 
-  ['/auth/:token', '/lognup', '/404'].forEach(function (e) {
+  ['/auth/:token', '/lognup', '/404', '/profile'].forEach(function (e) {
     app.get(e, rootPageMiddleware);
   });
 
