@@ -83,6 +83,10 @@ body {
 }
 
 .content {
+
+  @media (max-width: 600px) {
+    padding: 0 1em;
+  }
 }
 
 .input-main--container {
@@ -226,6 +230,10 @@ body {
   .notifications--container {
     margin: 0 auto;
     width: 350px;
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
   }
 }
 
@@ -251,6 +259,9 @@ body {
 .sideback {
   position: fixed;
   top: 0;
+  @media (max-width: 600px) {
+    display: none;
+  }
   &.right {
     right: 0;
   }
