@@ -12,8 +12,9 @@ angular.module('fugitive')
 
     vm.lognup = function () {
       $http.post('/lognup', vm.user)
-        .then(function (res) {
+        .then(function () {
           vm.status = 'OK';
+          vm.user.email = '';
         })
         .catch(function (err) {
           console.log(err);
