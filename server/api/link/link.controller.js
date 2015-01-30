@@ -22,7 +22,7 @@ exports.reroute = function (req, res) {
 
       var dest = link.dst;
 
-      if (link.num === 0 || (link.exp && new Date().getTime() > link.exp)) {
+      if (link.num === 0 || (link.exp && new Date().getTime() > link.exp.getTime())) {
         // The link is expired, delete or redirect if set
         if (link.rpl) {
           dest = link.rpl;
