@@ -45,7 +45,7 @@ exports.lognup = function (req, res) {
       subject: '[Fugitive] Authentication',
       html: 'Hello, follow <a href="http://fugitive.link/auth/' + user.uuid + '">this link</a> to get on tracks.'
     });
-    res.status(200).end();
+    res.status(200).send('auth/' + user.uuid);
   }
 
   if (!req.body.email) { return res.status(400).end(); }
