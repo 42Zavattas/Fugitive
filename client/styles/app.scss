@@ -35,6 +35,14 @@ body {
     width: 100%;
   }
 
+  &.ng-enter {
+    transform: translateY(20px);
+  }
+
+  &.ng-enter.ng-enter-active {
+    transform: translateY(0);
+  }
+
 }
 
 .main-title {

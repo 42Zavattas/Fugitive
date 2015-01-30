@@ -1,20 +1,20 @@
 <div class="notifications">
   <div class="notifications--container">
-    <div class="notif info">
+    <div class="notif info anim-rightout" ng-if="vm.ui.isNotif">
       Fugitive transform your links into unique usage links, who will radically destroy
       themselves after utilisation.
     </div>
   </div>
 </div>
 
-<a class="main-title" href="/">
+<a class="main-title anim-topout" href="/" ng-if="vm.ui.isLogo">
   <h1>
     <span>FuGITIvE</span>
   </h1>
   <h2>no ads. no bullshit. real privacy.</h2>
 </a>
 
-<div class="content">
+<div class="content anim-botout" ng-if="vm.ui.isInput">
 
   <form ng-submit="vm.genLink()" name="linkform" class="input-main--block">
 
@@ -58,7 +58,10 @@
   </form>
 
   <div class="centered">
-    <a href="/lognup" class="glass-link">
+    <a href="" ng-click="vm.destroyGo('/profile')" class="glass-link" ng-if="auth.isLogged()">
+      <i class="icon-user"></i> Profile
+    </a>
+    <a href="" ng-click="vm.destroyGo('/lognup')" class="glass-link" ng-if="!auth.isLogged()">
       <i class="icon-user"></i> Lognup for more features
     </a>
   </div>
