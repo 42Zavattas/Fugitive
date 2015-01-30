@@ -2,7 +2,10 @@
 
 .zava-input {
 
-  input[type=text] {
+  width: 100%;
+
+  input[type=text],
+  input[type=email] {
 
     outline: none;
 
@@ -35,7 +38,8 @@
 
   &.big {
 
-    input[type=text] {
+    input[type=text],
+    input[type=email] {
 
       font-size: 24px;
       font-family: monospace;
@@ -64,6 +68,7 @@
     left: 0;
     right: 0;
 
+    text-align: center;
     font-size: 13px;
     padding: .5em;
 
