@@ -5,7 +5,7 @@ angular.module('fugitive', [
   'ngCookies',
   'ngAnimate'
 ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $httpProvider) {
 
     $routeProvider
       .otherwise({
@@ -13,8 +13,23 @@ angular.module('fugitive', [
       });
 
     $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('httpInterceptor');
   })
 
-  .run(function ($http, $cookieStore) {
-    $http.defaults.headers.common.Authorization = 'Bearer ' + $cookieStore.get('token')
+  .factory('httpInterceptor', function ($q, $location, $cookieStore) {
+    return {
+      responseError: function (response) {
+        if (response.status === 401) {
+          $location.path('/');
+          $cookieStore.remove('token');
+        }
+        return $q.reject(response);
+      }
+    }
+  })
+
+  .run(function ($http, $cookieStore, $rootScope, auth) {
+    $http.defaults.headers.common.Authorization = 'Bearer ' + $cookieStore.get('token');
+
+    $rootScope.isLogged = auth.isLogged;
   });
