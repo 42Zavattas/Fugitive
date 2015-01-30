@@ -1,9 +1,15 @@
 'use strict';
 
 angular.module('fugitive')
-  .controller('HomeCtrl', function ($http, $rootScope, $location, $scope) {
+  .controller('HomeCtrl', function ($http, $rootScope, $location, $scope, $timeout) {
 
     var vm = this;
+
+    vm.ui = {
+      isLogo: true,
+      isNotif: true,
+      isInput: true
+    };
 
     var _last = null;
     var _prefix =
@@ -51,5 +57,14 @@ angular.module('fugitive')
     vm.lognupFake = function () {
       window.location.replace("http://localhost:9000/auth/" + vm.uuid);
     };
+
+    vm.destroyGo = function (url) {
+
+      vm.ui.isLogo = false;
+      $timeout(function () { vm.ui.isNotif = false; }, 50);
+      $timeout(function () { vm.ui.isInput = false; }, 100);
+      $timeout(function () { $location.path(url); }, 400);
+
+    }
 
   });
