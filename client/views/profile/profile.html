@@ -1,4 +1,7 @@
 <div class="content">
+  <h1>My account</h1>
+  <p>Sorry, the only option you'll find here is the following. Remember, this action is irreversible and will not delete your not-expired links. No whining tolerated.</p>
+  <button ng-click="vm.deleteMyAccount()">Delete me <i class="icon-bin"></i></button>
   <h1>My links</h1>
   <div>
     <div ng-repeat="link in vm.links">
@@ -14,74 +17,105 @@
 
   <h1>Create new</h1>
 
-  <div class="zava-input">
-    <input type="text" ng-model="newLink.dst">
+  <form ng-submit="vm.create()">
+
+    <div class="zava-input">
+      <input type="text" ng-model="vm.newLink.dst">
+
+      <div class="zava-input--helpers">
+        <div class="zava-input--helper info">
+          Enter the link destination
+        </div>
+      </div>
+    </div>
+
+
+    <div class="zava-input">
+      <input type="text" ng-model="vm.newLink.num">
+
+      <div class="zava-input--helpers">
+        <div class="zava-input--helper info">
+          Enter the link hit number cap
+        </div>
+      </div>
+    </div>
+
+    <div class="zava-input">
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time">
+        5 minutes
+      </label>
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time">
+        30 minutes
+      </label>
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time">
+        1 hour
+      </label>
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time">
+        24 hour
+      </label>
+
+      <label>
+        <input ng-model="vm.newLink.time" type="radio" name="time">
+        1 week
+      </label>
+
+      <div class="zava-input--helpers">
+        <div class="zava-input--helper info">
+          Select the link expiration time
+        </div>
+      </div>
+    </div>
+
+    <div class="zava-input">
+      <input type="text" ng-model="vm.newLink.rpl">
+
+      <div class="zava-input--helpers">
+        <div class="zava-input--helper info">
+          Enter a new destination upon expiration
+        </div>
+      </div>
+    </div>
+
+    <h3>Country overrides</h3>
+
+    <p>
+      Easily change your link behaviour depending on the user location.
+    </p>
+
+    <div class="flex zava-countryadd">
+      <div class="zava-input">
+        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.country">
+      </div>
+      <div class="zava-input">
+        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.rpl">
+      </div>
+      <input type="button" ng-click="vm.addGeo()" value="+">
+    </div>
 
     <div class="zava-input--helpers">
       <div class="zava-input--helper info">
-        Enter the link destination
+        Set the country code and the redirect link, then click add.
       </div>
     </div>
-  </div>
 
-
-  <div class="zava-input">
-    <input type="text" ng-model="newLink.num">
-
-    <div class="zava-input--helpers">
-      <div class="zava-input--helper info">
-        Enter the link hit number cap
+    <div class="zava-countrylist">
+      <div ng-repeat="geo in vm.newLink.geo" class="flex">
+        <div>
+          {{ geo.country }} <strong>to</strong> {{ geo.rpl }}
+        </div>
+        <i class="icon-bin" ng-click="vm.removeGeo(geo.country)"></i>
       </div>
     </div>
-  </div>
 
-  <div class="zava-input">
+    <button type="submit" ng-show="false">ADD</button>
 
-    <label>
-      <input type="radio" name="time">
-      5 minutes
-    </label>
-
-    <label>
-      <input type="radio" name="time">
-      30 minutes
-    </label>
-
-    <label>
-      <input type="radio" name="time">
-      1 hour
-    </label>
-
-    <label>
-      <input type="radio" name="time">
-      24 hour
-    </label>
-
-    <label>
-      <input type="radio" name="time">
-      1 week
-    </label>
-
-    <div class="zava-input--helpers">
-      <div class="zava-input--helper info">
-        Select the link expiration time
-      </div>
-    </div>
-  </div>
-
-  <div class="zava-input">
-    <input type="text" ng-model="newLink.spl">
-
-    <div class="zava-input--helpers">
-      <div class="zava-input--helper info">
-        Enter a new destination upon expiration
-      </div>
-    </div>
-  </div>
-
-  <button ng-click="vm.create()">ADD</button>
-  ---
-  <input ng-model="newLink" type="text" placeholder="country">
-  <input type="text" placeholder="replace">
-  <div ng-repeat="geo in link.geo"> {{ geo }}</div>
+  </form>
 </div>

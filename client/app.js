@@ -16,12 +16,12 @@ angular.module('fugitive', [
     $httpProvider.interceptors.push('httpInterceptor');
   })
 
-  .factory('httpInterceptor', function ($q, $location, $cookieStore) {
+  .factory('httpInterceptor', function ($q, $location, $cookieStore, auth) {
     return {
       responseError: function (response) {
         if (response.status === 401) {
           $location.path('/');
-          $cookieStore.remove('token');
+          auth.removeToken();
         }
         return $q.reject(response);
       }
