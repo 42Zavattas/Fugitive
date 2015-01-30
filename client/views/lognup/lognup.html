@@ -1,0 +1,29 @@
+<div class="notifications">
+  <div class="notifications--container">
+    <div class="notif info">
+      Lognup is an unified 'LOGIN/SIGNUP' processus.
+    </div>
+    <div class="notif info">
+      Simply enter you email and we'll send you your connexion link.
+    </div>
+  </div>
+</div>
+
+<div class="content centered">
+
+  <form ng-submit="vm.lognup()" class="form-horiz">
+
+    <input type="email"
+           ng-model="vm.user.email"
+           focus-me="true"
+           placeholder="email"/>
+
+    <button>Lognup</button>
+
+  </form>
+
+  <p ng-if="vm.status == 'OK'" class="context-info">
+    Mail has been sent.
+  </p>
+
+</div>
