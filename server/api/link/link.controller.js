@@ -87,12 +87,22 @@ exports.create = function (req, res) {
     return res.send(400).end();
   }
 
-  if ((!req.body.num || req.body.num < 1) && (!req.body.expire)) {
+  if (req.body.exp) { delete req.body.exp; }
+
+  if ((!req.body.num || req.body.num < 1) && (!req.body.time)) {
     req.body.num = 1;
   }
 
   if (req.user && req.user._id) {
     req.body.user = req.user._id;
+    if (req.body.time !== 'none') {
+      if (['5', '30', '60', '1440', '10080'].indexOf(req.body.time) === -1 || typeof req.body.time !== 'string') {
+        return res.status(400).end();
+      }
+      var date = new Date();
+      date.setTime(date.getTime() + (parseInt(req.body.time) * 60000));
+      req.body.exp = date.getTime();
+    }
   }
 
   req.body.src = uuid.v4().split('-')[0];

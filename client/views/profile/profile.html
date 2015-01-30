@@ -105,16 +105,20 @@
 
     <div class="flex zava-countryadd">
       <div class="zava-input">
-        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.country">
+        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.country" name="country">
       </div>
       <div class="zava-input">
-        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.rpl">
+        <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.rpl" name="countryRpl">
       </div>
       <input type="button" ng-click="vm.addGeo()" value="+">
     </div>
 
     <div class="zava-input--helpers">
-      <div class="zava-input--helper info">
+      <div class="zava-input--helper error" ng-if="(vm.newGeo.country.length > 0 && !vm.newGeo.rpl.length) || (vm.newGeo.rpl.length > 0 && !vm.newGeo.country.length)">
+        You should enter a country and an associated link.
+      </div>
+
+      <div class="zava-input--helper info" ng-if="!(vm.newGeo.country.length > 0 && !vm.newGeo.rpl.length) || (vm.newGeo.rpl.length > 0 && !vm.newGeo.country.length)">
         Set the country code and the redirect link, then click add.
       </div>
     </div>

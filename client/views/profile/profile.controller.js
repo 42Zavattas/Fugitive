@@ -15,7 +15,7 @@ angular.module('fugitive')
       geo: []
     };
 
-    vm.newGeo = {};
+    vm.newGeo = { country: '' };
 
     vm.addGeo = function () {
       if (!vm.newGeo.country || !vm.newGeo.rpl) { return ; }
