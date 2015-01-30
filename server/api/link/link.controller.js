@@ -12,6 +12,13 @@ function handleError(res, err) {
   return res.status(500).send(err);
 }
 
+function addHttp (url) {
+  if (!url.match(/^[a-zA-Z]+:\/\//)) {
+    url = 'http://' + url;
+  }
+  return url;
+}
+
 exports.reroute = function (req, res) {
 
   if (req.device.type === 'bot') {
@@ -41,7 +48,11 @@ exports.reroute = function (req, res) {
 
         if (link.num !== -1) {
           link.num--;
-          link.save();
+          if (link.num === 0) {
+            link.remove();
+          } else {
+            link.save();
+          }
         }
 
         if (link.geo && link.geo.length) {
@@ -107,10 +118,11 @@ exports.create = function (req, res) {
     }
     if (req.body.geo) {
       req.body.geo.forEach(function (e) {
-        if (!e.rpl.match(/^[a-zA-Z]+:\/\//)) {
-          e.rpl = 'http://' + e.rpl;
-        }
+        e.rpl = addHttp(e.rpl);
       });
+    }
+    if (req.body.rpl) {
+      req.body.rpl = addHttp(req.body.rpl);
     }
   } else {
     delete req.body.user;
@@ -121,9 +133,7 @@ exports.create = function (req, res) {
 
   req.body.src = uuid.v4().split('-')[0];
 
-  if (!req.body.dst.match(/^[a-zA-Z]+:\/\//)) {
-    req.body.dst = 'http://' + req.body.dst;
-  }
+  req.body.dst = addHttp(req.body.dst);
 
   Link.create(req.body, function (err, link) {
     if (err) { return handleError(res, err); }
