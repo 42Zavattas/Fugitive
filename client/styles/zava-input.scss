@@ -102,8 +102,45 @@
 
 }
 
+.zava-countryadd {
+  .zava-input {
+    width: 45%;
+  }
+  [type=button] {
+    width: 10%;
+  }
+  .zava-input + .zava-input {
+    margin-left: 10px;
+  }
+  .zava-input + button {
+    margin-left: 20px;
+  }
+}
+
+.zava-countrylist {
+  list-style: none;
+  padding: 0;
+  > div {
+    padding: 15px 0;
+  }
+  div div {
+    flex: 1;
+  }
+  div + div {
+    border-top: 1px solid rgba(white, 0.3);
+  }
+}
+
 .zavinsible {
   border: none;
   background: transparent;
   outline: none;
+  cursor: pointer;
+}
+
+i.icon-bin {
+  cursor: pointer;
+  &:hover {
+    color: $cred;
+  }
 }
