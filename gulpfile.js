@@ -64,7 +64,12 @@ gulp.task('inject', ['sass'], function () {
   return gulp.src('client/index.html')
     .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
       name: 'bower',
-      relative: 'true'
+      relative: 'true',
+      ignorePath: [
+        "bower_components/jquery/dist/jquery.js",
+        "bower_components/velocity/velocity.js",
+        "bower_components/velocity/velocity.ui.js"
+      ]
     }))
     .pipe($.inject(sources, { relative: true }))
     .pipe(gulp.dest('client'));
@@ -83,7 +88,12 @@ gulp.task('watch', ['inject'], function () {
     gulp.src('client/index.html')
       .pipe($.inject(gulp.src(bowerFiles(), { read: false }), {
         name: 'bower',
-        relative: 'true'
+        relative: 'true',
+        ignorePath: [
+          "bower_components/jquery/dist/jquery.js",
+          "bower_components/velocity/velocity.js",
+          "bower_components/velocity/velocity.ui.js"
+        ]
       }))
       .pipe(gulp.dest('client'));
   });
