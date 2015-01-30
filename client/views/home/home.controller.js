@@ -5,6 +5,7 @@ angular.module('fugitive')
 
     var vm = this;
 
+    var _last = null;
     var _prefix =
       $location.protocol() +
       '://' + $location.host() +
@@ -19,11 +20,13 @@ angular.module('fugitive')
     };
 
     vm.genLink = function () {
+      if (_last === vm.link.dst) { return; }
       $http.post('/create', vm.link)
         .then(function (res) {
           vm.link.dst = _prefix + '/' + res.data.src;
           $scope.linkform.$setPristine();
           $rootScope.$broadcast('linkCreated');
+          _last = vm.link.dst;
 
         })
         .catch(function (err) {
