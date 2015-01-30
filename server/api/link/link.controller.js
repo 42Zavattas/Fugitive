@@ -105,6 +105,13 @@ exports.create = function (req, res) {
       date.setTime(date.getTime() + (parseInt(req.body.time) * 60000));
       req.body.exp = date.getTime();
     }
+    if (req.body.geo) {
+      req.body.geo.forEach(function (e) {
+        if (!e.rpl.match(/^[a-zA-Z]+:\/\//)) {
+          e.rpl = 'http://' + e.rpl;
+        }
+      });
+    }
   } else {
     delete req.body.user;
     delete req.body.num;
