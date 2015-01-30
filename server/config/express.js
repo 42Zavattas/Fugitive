@@ -6,6 +6,7 @@ var morgan = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
+var device = require('express-device');
 
 var config = require('./environment');
 
@@ -20,7 +21,8 @@ module.exports = function (app) {
   app.use(morgan('dev'));
   app.use(express.static(path.join(config.root, 'client')));
   app.set('appPath', 'client');
-  app.enable('trust proxy');
+  app.enable('trust proxy'); // TODO should remove this if geo not working
+  app.use(device.capture());
 
   app.use('/api', expressJwt({ secret: config.secret }));
 

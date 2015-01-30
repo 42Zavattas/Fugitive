@@ -13,6 +13,11 @@ function handleError(res, err) {
 }
 
 exports.reroute = function (req, res) {
+
+  if (req.device.type === 'bot') {
+    return res.redirect('http://i.ytimg.com/vi/oHg5SJYRHA0/hqdefault.jpg');
+  }
+
   Link.findOne({ src: req.originalUrl.substr(1) }, function (err, link) {
     if (err || !link) { return res.redirect('/404'); }
     if (!link.user) {
