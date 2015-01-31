@@ -17,7 +17,7 @@ angular.module('fugitive')
       '://' + $location.host() +
       ($location.port() !== 80 ? ':' + $location.port() : '');
 
-    vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6}).*\/?$/;
     vm.user = { email: 'ou@oou.fr' };
 
     vm.resLink = null;
