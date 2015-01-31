@@ -20,6 +20,9 @@ body {
   &.between {
     justify-content: space-between;
   }
+  .one {
+    flex: 1;
+  }
 }
 
 .emphasied {
@@ -397,6 +400,13 @@ hr {
     &:hover {
       background: rgba(lighten($cbase, 3), .9);
     }
+  }
+}
+
+.zava-table {
+  width: 100%;
+  tr th {
+    text-align: left;
   }
 }
 

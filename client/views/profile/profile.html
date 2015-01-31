@@ -11,11 +11,20 @@
   <button ng-click="vm.deleteMyAccount()">Delete me <i class="icon-bin"></i></button>
   <h1>My links</h1>
   <div>
-    <div ng-repeat="link in vm.links" class="flex between">
-      <input value="http://fugitive.link/{{ link.src }}" select-on-creation readonly class="zavinsible" type="text">
-      <span>{{ link.dst }}</span>
-      <i class="icon-bin" ng-click="vm.delete(link)"></i>
-    </div>
+    <table class="zava-table">
+      <tr>
+        <th>Link</th>
+        <th>Expiration</th>
+        <th colspan="2">Destination</th>
+      </tr>
+      <tr ng-repeat="link in vm.links">
+        <td><input value="http://fugitive.link/{{ link.src }}" select-on-creation readonly class="zavinsible" type="text"></td>
+        <td ng-if="link.exp">{{ link.exp | date: 'HH:mm dd/MM/yyyy' }}</td>
+        <td ng-if="link.num && !link.exp">{{ link.num }}</td>
+        <td>{{ link.dst }}</td>
+        <td><i class="icon-bin" ng-click="vm.delete(link)"></i></td>
+      </tr>
+    </table>
     <div ng-if="!vm.links.length">
       Nothing for now, create a custom link by using the following form.
     </div>
