@@ -5,7 +5,7 @@
   width: 100%;
 
   input[type=text],
-  input[type=email]{
+  input[type=email] {
 
     outline: none;
 
@@ -48,6 +48,28 @@
 
   }
 
+}
+
+.zava-button {
+  border: 1px solid rgba(white, 0.05);
+  padding: 10px;
+  box-shadow: rgba(black, 0.2) 0 0 2px;
+  outline: none;
+  i {
+    color: inherit !important;
+  }
+  &.danger {
+    background: $cred;
+    &:hover {
+      background: rgba($cred, .8);
+    }
+  }
+  &.info {
+    background: $cgreen;
+    &:hover {
+      background: rgba($cgreen, .8);
+    }
+  }
 }
 
 .zava-input--helpers {
@@ -109,11 +131,9 @@
   [type=button] {
     width: 10%;
   }
-  .zava-input + .zava-input {
+  .zava-input + .zava-input,
+  .zava-input + .zava-button {
     margin-left: 10px;
-  }
-  .zava-input + button {
-    margin-left: 20px;
   }
 }
 

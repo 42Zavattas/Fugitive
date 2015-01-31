@@ -6,9 +6,13 @@
 </div>
 
 <div class="content">
+
   <h1>My account</h1>
   <p>Sorry, the only option you'll find here is the following. Remember, this action is irreversible and will not delete your not-expired links. No whining tolerated.</p>
-  <button ng-click="vm.deleteMyAccount()">Delete me <i class="icon-bin"></i></button>
+  <button ng-click="vm.deleteMyAccount()" class="zava-button danger">
+    Delete me <i class="icon-bin"></i>
+    </button>
+
   <h1>My links</h1>
   <div>
     <table class="zava-table">
@@ -50,7 +54,7 @@
     </div>
 
     <hr>
-    <h3 class="emphasied">The following option are all optional</h3>
+    <h3 class="emphasied">The following options are all optional</h3>
 
     <div class="zava-switch flex">
       <span ng-class="{ active: vm.mode === 'hit' }" ng-click="vm.switchMode('hit')">
@@ -65,10 +69,10 @@
       <input ng-pattern="/^[0-9]+$/" type="text" ng-model="vm.newLink.num" name="num">
 
       <div class="zava-input--helpers">
-        <div class="zava-input--helper error" ng-if="createForm.num.$invalid">
+        <div class="zava-input--helper error" ng-if="createForm.num.$invalid || vm.newLink.num == 0">
           This number is invalid.
         </div>
-        <div class="zava-input--helper info" ng-if="createForm.num.$valid">
+        <div class="zava-input--helper info" ng-if="createForm.num.$valid && vm.newLink.num != 0">
           Enter the link hit number cap
         </div>
       </div>
@@ -139,7 +143,7 @@
       <div class="zava-input">
         <input ng-enter="vm.addGeo()" type="text" ng-model="vm.newGeo.rpl" name="countryRpl">
       </div>
-      <input type="button" ng-click="vm.addGeo()" value="+">
+      <input type="button" ng-click="vm.addGeo()" value="+" class="zava-button info">
     </div>
 
     <div class="zava-input--helpers">
