@@ -82,7 +82,20 @@ exports.reroute = function (req, res) {
 exports.index = function (req, res) {
   Link.find({ user: req.user._id }, function (err, links) {
     if (err) { return handleError(res, err); }
-    return res.status(200).json(links);
+    var now = new Date().getTime();
+    var out = [];
+
+    // Remove time expired links
+    if (links && links.length) {
+      links.forEach(function (e) {
+        if (e.exp && e.exp < now) {
+          e.remove();
+        } else {
+          out.push(e);
+        }
+      });
+    }
+    return res.status(200).json(out);
   });
 };
 
