@@ -4,7 +4,7 @@
 
 Have you ever dreamed about a service allowing you to create throwable links to share, without leaving some kind of dirty trail behind you?
 
-Well, that's where **Fugtive** came.
+Well, that's where **Fugitive** came.
 
 In less than 3 seconds (2 on a Dvorak keyboard), you'll be able to get on the site, paste your link, press enter and finally copy the *furtive link*.
 
