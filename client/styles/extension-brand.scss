@@ -1,0 +1,45 @@
+@import 'variables';
+
+.extension-brand {
+
+  position: absolute;
+  top: -3em;
+  left: 0;
+  right: 0;
+
+  text-align: center;
+
+  a {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 24px;
+      margin-right: .5rem;
+      display: block;
+      transition: 350ms transform;
+      transition-timing-function: cubic-bezier(.41,1.49,.81,1.07);
+    }
+
+    span {
+      transition: 150ms linear padding;
+      display: block;
+    }
+
+    &:hover {
+
+      i {
+        transform: scale(3) rotate(360deg);
+      }
+
+      span {
+        color: rgba(white, .8);
+      }
+
+    }
+
+  }
+
+}
