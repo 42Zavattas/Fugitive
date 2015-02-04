@@ -28,4 +28,27 @@ server.listen(config.port, config.ip, function () {
 
 });
 
+// Deployment
+
+var githubhook = require('githubhook');
+var github = githubhook({
+  path   : '/deploy',
+  secret : process.env.FUGITIVE_SECRET || 'yolo'
+});
+
+github.listen();
+
+github.on('push:Fugitive', function (repo, ref, data) {
+  var deploy = require('./deploy')();
+  deploy.stdout.on('data', function (data) {
+    console.log(String(data));
+  });
+  deploy.stderr.on('data', function (data) {
+    console.log(chalk.red(data));
+  });
+  deploy.on('exit', function (code) {
+    console.log(chalk.blue('Deploy end with code [' + code + ']'));
+  });
+});
+
 module.exports = server;

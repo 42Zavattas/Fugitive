@@ -45,6 +45,7 @@
     "express": "^4.11.2",
     "express-device": "^0.3.11",
     "express-jwt": "^1.0.0",
+    "githubhook": "^1.1.3",
     "jsonwebtoken": "^3.2.2",
     "lodash": "^3.0.1",
     "maxmind": "^0.5.3",
