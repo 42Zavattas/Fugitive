@@ -2,6 +2,8 @@
 
 > no ads, no bullshit, real privacy
 
+[Download the chrome extension now](https://chrome.google.com/webstore/detail/fugitive/pafdfbfhpmbkfjfghpihpkppeeckfnbn)
+
 Have you ever dreamed about a service allowing you to create throwable links to share, without leaving some kind of dirty trail behind you?
 
 Well, that's where **Fugitive** came.
