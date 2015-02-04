@@ -72,13 +72,6 @@ hr {
   text-align: center;
   margin-bottom: 5em;
 
-  &:hover {
-    h1 {
-      text-shadow: none;
-      color: $corange;
-    }
-  }
-
   @media (max-width: 600px) {
     margin: 1em 0;
   }
