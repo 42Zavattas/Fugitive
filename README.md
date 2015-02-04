@@ -13,7 +13,7 @@ In less than 3 seconds (2 on a Dvorak keyboard), you'll be able to get on the si
 <br>
 All the links redirect bots (Google, Facebook...) to a RickRoll and will not disclose the content of the link you share to a real person.
 
-There is some more advanced features like time based expiration, specific number of hits to expire, a custom redirect upon expiration, and even country redirect overrides! An expired link will always be **TRULLY** deleted, no track.
+There is some more advanced features like time based expiration, specific number of hits to expire, a custom redirect upon expiration, and even country redirect overrides! An expired link will always be **TRULLY** deleted, no tracking.
 
 <br>
 We also have implemented the God Login, aka *Lognup*, a new system where you only have to set your mail to get ready to use the site with more features availables. This sent you a link that will be available only one time. No more *forgot password headache*.
