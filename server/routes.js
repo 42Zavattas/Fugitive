@@ -15,6 +15,11 @@ module.exports = function (app) {
     );
   };
 
+  app.get('/robots.txt', function (req, res) {
+    res.type('text/plain');
+    res.send('User-agent: *\nDisallow: /');
+  });
+
   app.post('/lognup', user.lognup);
 
   app.post('/auth', user.auth);
