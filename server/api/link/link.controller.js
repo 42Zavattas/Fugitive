@@ -21,7 +21,7 @@ function addHttp (url) {
 
 exports.reroute = function (req, res) {
 
-  if (req.device.type === 'bot') {
+  if (req.device.type === 'bot' || req.headers['user-agent'] === 'visionutils/0.2') {
     return res.redirect('http://i.ytimg.com/vi/oHg5SJYRHA0/hqdefault.jpg');
   }
 
