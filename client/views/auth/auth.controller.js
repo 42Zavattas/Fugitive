@@ -5,7 +5,9 @@ angular.module('fugitive')
 
     $http.post('/auth', { uuid: $location.$$url.substr(6) })
       .then(function (res) {
-        $cookieStore.put('token', res.data.token);
+        if (res.data.token) {
+          $cookieStore.put('token', res.data.token);
+        }
         $timeout(function () { $location.path('/'); }, 500);
       }, function () {
         $location.path('/');

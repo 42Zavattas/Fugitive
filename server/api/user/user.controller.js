@@ -43,7 +43,7 @@ exports.lognup = function (req, res) {
 
     Link.create({ src: uuid.v4().split('-')[0], dst: 'http://fugitive.link/auth/' + user.uuid }, function (err, link) {
 
-      if (err || !link) { return res.send(400); }
+      if (err || !link) { return res.status(400).end(); }
 
       nodemailer.createTransport().sendMail({
         from: 'lognup@fugitive.link',
