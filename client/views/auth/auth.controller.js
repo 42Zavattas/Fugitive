@@ -7,6 +7,8 @@ angular.module('fugitive')
       .then(function (res) {
         $cookieStore.put('token', res.data.token);
         $timeout(function () { $location.path('/'); }, 500);
+      }, function () {
+        $location.path('/');
       });
 
   });
