@@ -7,6 +7,7 @@ var maxmind = require('maxmind');
 maxmind.init(__dirname + '/geo.dat');
 
 var Link = require('./link.model');
+var Stat = require('../stat/stat.model');
 
 function handleError(res, err) {
   return res.status(500).send(err);
@@ -150,6 +151,9 @@ exports.create = function (req, res) {
 
   Link.create(req.body, function (err, link) {
     if (err) { return handleError(res, err); }
+
+    Stat.update({}, { $inc: { count: 1 } }).exec();
+
     return res.status(201).json(link);
   });
 };

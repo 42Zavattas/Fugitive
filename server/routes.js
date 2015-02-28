@@ -26,6 +26,7 @@ module.exports = function (app) {
   app.post('/create', link.create);
 
   // API
+  app.use('/api/stats', require('./api/stat'));
   app.use('/api/links', require('./api/link'));
   app.use('/api/users', require('./api/user'));
 
