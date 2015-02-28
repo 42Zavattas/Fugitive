@@ -52,7 +52,7 @@ exports.lognup = function (req, res) {
         html: 'Hello, follow <a href="http://fugitive.link/' + link.src + '">this link</a> to get on tracks.'
       });
 
-      res.status(200).send('auth/' + user.uuid);
+      res.status(200).end();
 
     });
   }

@@ -20,7 +20,6 @@ angular.module('fugitive')
         .then(function (res) {
           vm.status = 'OK';
           vm.user.email = '';
-          vm.mockLink = _prefix + '/' + res.data;
           $scope.lognupform.$setPristine();
         })
         .catch(function (err) {
