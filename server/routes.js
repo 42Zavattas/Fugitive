@@ -4,8 +4,6 @@ var config = require('./config/environment');
 var user = require('./api/user/user.controller');
 var link = require('./api/link/link.controller');
 
-var Link = require('./api/link/link.model');
-
 module.exports = function (app) {
 
   var rootPageMiddleware = function (req, res) {
@@ -26,7 +24,8 @@ module.exports = function (app) {
   app.post('/create', link.create);
 
   // API
-  app.use('/api/stats', require('./api/stat'));
+  app.get('/stats', require('./api/stat/stat.controller.js').index);
+
   app.use('/api/links', require('./api/link'));
   app.use('/api/users', require('./api/user'));
 
