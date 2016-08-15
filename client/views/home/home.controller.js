@@ -15,7 +15,7 @@ angular.module('fugitive')
     var _prefix =
       $location.protocol() +
       '://' + $location.host() +
-      ($location.port() !== 80 ? ':' + $location.port() : '');
+      ([80, 443].indexOf($location.port()) === -1 ? ':' + $location.port() : '');
 
     vm.urlValidate = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6}).*\/?$/;
     vm.user = { email: '' };
